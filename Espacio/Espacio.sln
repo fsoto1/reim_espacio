@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2017
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Espacio", "Espacio.csproj", "{AC318CC2-D548-9BB7-D37C-9525CD8FE52B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Espacio.Editor", "Espacio.Editor.csproj", "{C64BA4CF-9FBC-F2C8-3568-18A38A9E9B58}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,10 +13,6 @@ Global
 		{AC318CC2-D548-9BB7-D37C-9525CD8FE52B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC318CC2-D548-9BB7-D37C-9525CD8FE52B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC318CC2-D548-9BB7-D37C-9525CD8FE52B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C64BA4CF-9FBC-F2C8-3568-18A38A9E9B58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C64BA4CF-9FBC-F2C8-3568-18A38A9E9B58}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C64BA4CF-9FBC-F2C8-3568-18A38A9E9B58}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C64BA4CF-9FBC-F2C8-3568-18A38A9E9B58}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>2017.1.0f3</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -78,6 +80,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\alcanzarSatelite\RotarControlador.cs" />
     <Compile Include="Assets\_Complete-Game\Scripts\Done_BGScroller.cs" />
     <Compile Include="Assets\_Complete-Game\Scripts\Done_DestroyByBoundary.cs" />
     <Compile Include="Assets\_Complete-Game\Scripts\Done_DestroyByContact.cs" />
@@ -88,17 +91,19 @@
     <Compile Include="Assets\_Complete-Game\Scripts\Done_PlayerController.cs" />
     <Compile Include="Assets\_Complete-Game\Scripts\Done_RandomRotator.cs" />
     <Compile Include="Assets\_Complete-Game\Scripts\Done_WeaponController.cs" />
-    <Compile Include="Assets\Scripts\AsteroideAleatorio.cs" />
-    <Compile Include="Assets\Scripts\AsteroideRotacion.cs" />
+    <Compile Include="Assets\Scripts\alcanzarSatelite\AlcanzarSateliteApp.cs" />
+    <Compile Include="Assets\Scripts\alcanzarSatelite\AlcanzarSateliteControlador.cs" />
+    <Compile Include="Assets\Scripts\alcanzarSatelite\AlcanzarSateliteModelo.cs" />
+    <Compile Include="Assets\Scripts\alcanzarSatelite\AlcanzarSateliteVista.cs" />
+    <Compile Include="Assets\Scripts\alcanzarSatelite\JugadorControlador.cs" />
+    <Compile Include="Assets\Scripts\alcanzarSatelite\GenerarAsteroides.cs" />
     <Compile Include="Assets\Scripts\AsteroideSuperposicion.cs" />
-    <Compile Include="Assets\Scripts\Menu.cs" />
-    <Compile Include="Assets\Scripts\Movimiento.cs" />
-    <Compile Include="Assets\Scripts\PlayerColision.cs" />
-    <Compile Include="Assets\Scripts\PlayerMovimiento.cs" />
-    <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\Scripts\alcanzarSatelite\Menu.cs" />
+    <Compile Include="Assets\Scripts\recogerSuministros\GeneracionObjetos.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Spaceship\readme.txt" />
+    <None Include="Assets\crate\readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
