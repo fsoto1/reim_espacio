@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RecogerSuministrosSateliteModelo : RecogerSuministrosElement
+public class RecogerSuministrosModelo : RecogerSuministrosElement
 {
 
     public float jugador_velocidad = 5f;

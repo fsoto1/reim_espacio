@@ -10,9 +10,8 @@ public class RecogerSuministrosElement : NavegacionElement
 
 public class RecogerSuministrosApp : MonoBehaviour
 {
-    public AlcanzarSateliteControlador controlador = new AlcanzarSateliteControlador();
-    public AlcanzarSateliteModelo modelo = new AlcanzarSateliteModelo();
-    public AlcanzarSateliteVista vista = new AlcanzarSateliteVista();
-    
-}
+    public RecogerSuministrosControlador controlador = new RecogerSuministrosControlador();
+    public RecogerSuministrosModelo modelo = new RecogerSuministrosModelo();
+    public RecogerSuministrosVista vista = new RecogerSuministrosVista();
 
+}
