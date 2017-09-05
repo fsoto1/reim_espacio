@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GenerarAsteroides : AlcanzarSateliteElement
+public class GenerarAsteroides : AlcanzarSateliteVista
 {
     public GameObject asteroide1;
     public GameObject asteroide2;

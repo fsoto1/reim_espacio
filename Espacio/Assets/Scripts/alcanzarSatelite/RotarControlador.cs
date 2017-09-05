@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RotarControlador : AlcanzarSateliteElement
+public class RotarControlador : AlcanzarSateliteControlador
 {
     void Start()
     {

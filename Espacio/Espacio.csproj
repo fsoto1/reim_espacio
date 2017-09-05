@@ -80,7 +80,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\alcanzarSatelite\RotarControlador.cs" />
+    <Compile Include="Assets\Scripts\recogerSuministros\RecogerSuministrosVista.cs" />
     <Compile Include="Assets\_Complete-Game\Scripts\Done_BGScroller.cs" />
     <Compile Include="Assets\_Complete-Game\Scripts\Done_DestroyByBoundary.cs" />
     <Compile Include="Assets\_Complete-Game\Scripts\Done_DestroyByContact.cs" />
@@ -95,11 +95,19 @@
     <Compile Include="Assets\Scripts\alcanzarSatelite\AlcanzarSateliteControlador.cs" />
     <Compile Include="Assets\Scripts\alcanzarSatelite\AlcanzarSateliteModelo.cs" />
     <Compile Include="Assets\Scripts\alcanzarSatelite\AlcanzarSateliteVista.cs" />
-    <Compile Include="Assets\Scripts\alcanzarSatelite\JugadorControlador.cs" />
     <Compile Include="Assets\Scripts\alcanzarSatelite\GenerarAsteroides.cs" />
-    <Compile Include="Assets\Scripts\AsteroideSuperposicion.cs" />
+    <Compile Include="Assets\Scripts\alcanzarSatelite\JugadorControlador.cs" />
     <Compile Include="Assets\Scripts\alcanzarSatelite\Menu.cs" />
+    <Compile Include="Assets\Scripts\alcanzarSatelite\RotarControlador.cs" />
+    <Compile Include="Assets\Scripts\AsteroideSuperposicion.cs" />
+    <Compile Include="Assets\Scripts\navegacion\NavegacionApp.cs" />
+    <Compile Include="Assets\Scripts\navegacion\NavegacionControlador.cs" />
+    <Compile Include="Assets\Scripts\navegacion\NavegacionModelo.cs" />
+    <Compile Include="Assets\Scripts\navegacion\NavegacionVista.cs" />
     <Compile Include="Assets\Scripts\recogerSuministros\GeneracionObjetos.cs" />
+    <Compile Include="Assets\Scripts\recogerSuministros\RecogerSuministrosApp.cs" />
+    <Compile Include="Assets\Scripts\recogerSuministros\RecogerSuministrosControlador.cs" />
+    <Compile Include="Assets\Scripts\recogerSuministros\RecogerSuministrosModelo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Spaceship\readme.txt" />

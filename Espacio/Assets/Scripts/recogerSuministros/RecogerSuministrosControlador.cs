@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class AlcanzarSateliteControlador : AlcanzarSateliteElement
+public class RecogerSuministrosControlador : RecogerSuministrosElement
 {
 
     public void toques()

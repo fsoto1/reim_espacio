@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 
-public class AlcanzarSateliteVista  : AlcanzarSateliteElement
+public class RecogerSuministrosVista : RecogerSuministrosElement
 {
     public void OnGUI()
     {

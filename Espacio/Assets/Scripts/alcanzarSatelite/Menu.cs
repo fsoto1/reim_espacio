@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Menu : AlcanzarSateliteElement
+public class Menu : AlcanzarSateliteVista
 {
 
     public GameObject menu; 

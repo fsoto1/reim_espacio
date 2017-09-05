@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class JugadorControlador : AlcanzarSateliteElement
+public class JugadorControlador : AlcanzarSateliteControlador
 {
     private Vector3 coordenadas;
     private Vector3 posicion;
     private float velocidad = app.modelo.Jugador_velocidad;
 
-    void Update()
+    public void moverJugador()
     {
         if (Input.touchCount == 1)
         {
@@ -24,19 +24,27 @@ public class JugadorControlador : AlcanzarSateliteElement
 
         }
     }
-
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.name);
         if (collision.gameObject.name == "Space_object_O")
         {
-            Destroy(collision.gameObject);
             app.modelo.Finalizado = true;
+            
+            Destroy(collision.gameObject);
             SceneManager.LoadScene("alcanzarSatelite");
+            nav.modelo.Energia++;
+           
+
         }
         else
         {
             app.modelo.Cantidad_colisiones++;
         }
+    }
+
+    void Update()
+    {
+        moverJugador();
+        toques();
     }
 }
