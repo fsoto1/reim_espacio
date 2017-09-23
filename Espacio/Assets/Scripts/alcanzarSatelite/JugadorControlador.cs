@@ -47,4 +47,8 @@ public class JugadorControlador : AlcanzarSateliteControlador
         moverJugador();
         toques();
     }
+    private void Start()
+    {
+        reiniciarValores();
+    }
 }

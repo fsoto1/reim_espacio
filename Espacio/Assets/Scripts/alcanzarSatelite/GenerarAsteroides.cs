@@ -14,7 +14,6 @@ public class GenerarAsteroides : AlcanzarSateliteVista
         {
             Invoke("generar", 0);
         }
-        
     }
     // Update is called once per frame
     void generar () {

@@ -18,5 +18,13 @@ public class AlcanzarSateliteControlador : AlcanzarSateliteElement
             }
         }
     }
+    public void reiniciarValores()
+    {
+        app.modelo.Cantidad_colisiones = 0;
+        app.modelo.Duracion = 0f;
+        app.modelo.Duracion_toques = 0f;
+        app.modelo.Toques = 0;
+        app.modelo.Finalizado = false;
+    }
 
 }

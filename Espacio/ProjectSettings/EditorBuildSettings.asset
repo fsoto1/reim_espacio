@@ -5,9 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/mapa.unity
     guid: 008a833ffd330f643979eacf4f46334d
   - enabled: 1
+    path: Assets/navegacion.unity
+    guid: e79d4905eb32e87458db138b3332d9f4
+  - enabled: 1
     path: Assets/alcanzarSatelite.unity
     guid: 71b0e1c4d6af6264c83f57befc361627
+  - enabled: 1
+    path: Assets/recogerSuministros.unity
+    guid: 648f74ff1115f5d49ac6c094507ea008

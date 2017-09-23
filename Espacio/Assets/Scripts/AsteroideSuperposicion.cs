@@ -4,19 +4,10 @@ using UnityEngine;
 
 public class AsteroideSuperposicion : MonoBehaviour {
 
-    // Elimina asteroides superpuestos
-    void Start()
-    {
-           
-    }
 
-    void a(Collision collision)
+    void OnTriggerExit(Collider other)
     {
-        Debug.Log(collision.gameObject.name);
-        if (collision.gameObject.name != "Player" || collision.gameObject.name != "Space_object_O")
-        {
-            Destroy(collision.gameObject);
-        }
+        Destroy(other.gameObject);
     }
 
 

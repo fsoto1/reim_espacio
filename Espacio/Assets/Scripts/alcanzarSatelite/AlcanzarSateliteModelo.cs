@@ -13,6 +13,7 @@ public class AlcanzarSateliteModelo : AlcanzarSateliteElement
     private float duracion;
     private int toques;
     private float duracion_toques;
+
     public float Jugador_velocidad
     {
         get

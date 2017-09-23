@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GeneracionObjetos : MonoBehaviour {
+public class GeneracionObjetos : RecogerSuministrosControlador
+{
     public GameObject asteroide1;
     public GameObject asteroide2;
     public GameObject asteroide3;
