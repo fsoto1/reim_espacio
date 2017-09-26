@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class OleadaRecogerSuministrosControlador : RecogerSuministrosControlador
+public class OleadaEsquivarMeteoritosControlador : EsquivarMeteoritosControlador
 {  
-    public GameObject suministro;
     public GameObject asteroide1;
     public GameObject asteroide2;
     public GameObject asteroide3;
-    public Material[] materials;
     private Vector3 coordenadas;
     private Vector3 posicion;
 
@@ -22,10 +20,10 @@ public class OleadaRecogerSuministrosControlador : RecogerSuministrosControlador
         {
             for (int i = 0; i < app.modelo.Oleada_total; i++)
             {
-                Vector3 posicion_partida = new Vector3(11,Random.Range(-3, 6), 0);
+                Vector3 posicion_partida = new Vector3(Random.Range(app.modelo.Min_posicion, app.modelo.Max_posicion), 6, 0);
                 Quaternion rotacion_partida = Quaternion.identity;
                 GameObject clone;
-                random = Random.Range(0, 5);
+                random = Random.Range(0, 2);
                 if (random == 0)
                 {
                     clone = Instantiate(asteroide1, posicion_partida, rotacion_partida) as GameObject;
@@ -34,16 +32,11 @@ public class OleadaRecogerSuministrosControlador : RecogerSuministrosControlador
                 {
                     clone = Instantiate(asteroide2, posicion_partida, rotacion_partida) as GameObject;
                 }
-                else if (random == 2)
+                else 
                 {
                     clone = Instantiate(asteroide3, posicion_partida, rotacion_partida) as GameObject;
                 }
-                else
-                {
-                    clone = Instantiate(suministro, posicion_partida, rotacion_partida) as GameObject;
-                    clone.GetComponent<Renderer>().sharedMaterial = materials[Random.Range(0, materials.Length)];
-                }
-                clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.left * 10);
+                clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.down * app.modelo.Velocidad_objetos);
                 clone.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * app.modelo.Velocidad_rotacion;
                 yield return new WaitForSeconds(app.modelo.Tiempo_espera_aparicion);
             }
@@ -55,10 +48,8 @@ public class OleadaRecogerSuministrosControlador : RecogerSuministrosControlador
     {
         StartCoroutine(generarOleada());
         app.modelo.Cantidad_colisiones = 0;
-        app.modelo.Cantidad_suministros = 0;
+        app.modelo.Acelerometro = 0f;
         app.modelo.Duracion = 0f;
-        app.modelo.Duracion_toques = 0f;
-        app.modelo.Toques = 0;
         app.modelo.Finalizado = false;
     }
 }

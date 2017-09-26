@@ -2,22 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RecogerSuministrosModelo : RecogerSuministrosElement
+public class EsquivarMeteoritosModelo : EsquivarMeteoritosElement
 {
 
-    public float velocidad_jugador = 5f;
+    public float velocidad_jugador = 15f;
     private float velocidad_rotacion = 3f;
     private float tiempo_espera_inicio = 5f;
     private int oleada_total = 30;
     private float tiempo_espera_aparicion = 0.5f;
     private float tiempo_espera_oleada = 3f;
-    private float velocidad_objetos = 3f;
+    private float velocidad_objetos = 8f;
     private int cantidad_colisiones;
     private bool finalizado;
     private float duracion;
-    private int toques;
-    private float duracion_toques;
-    private int cantidad_suministros;
+    private float min_posicion = -7.5f;
+    private float max_posicion = 7.5f;
+    private float acelerometro ;
 
     public float Velocidad_jugador
     {
@@ -136,45 +136,6 @@ public class RecogerSuministrosModelo : RecogerSuministrosElement
         }
     }
 
-    public int Toques
-    {
-        get
-        {
-            return toques;
-        }
-
-        set
-        {
-            toques = value;
-        }
-    }
-
-    public float Duracion_toques
-    {
-        get
-        {
-            return duracion_toques;
-        }
-
-        set
-        {
-            duracion_toques = value;
-        }
-    }
-
-    public int Cantidad_suministros
-    {
-        get
-        {
-            return cantidad_suministros;
-        }
-
-        set
-        {
-            cantidad_suministros = value;
-        }
-    }
-
     public float Velocidad_rotacion
     {
         get
@@ -187,4 +148,44 @@ public class RecogerSuministrosModelo : RecogerSuministrosElement
             velocidad_rotacion = value;
         }
     }
+
+    public float Min_posicion
+    {
+        get
+        {
+            return min_posicion;
+        }
+
+        set
+        {
+            min_posicion = value;
+        }
+    }
+
+    public float Max_posicion
+    {
+        get
+        {
+            return max_posicion;
+        }
+
+        set
+        {
+            max_posicion = value;
+        }
+    }
+
+    public float Acelerometro
+    {
+        get
+        {
+            return acelerometro;
+        }
+
+        set
+        {
+            acelerometro = value;
+        }
+    }
 }
+

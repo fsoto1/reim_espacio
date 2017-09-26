@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>2017.1.1f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -83,7 +81,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\recogerSuministros\AnimacionBGRecogerSuministrosControlador.cs" />
     <Compile Include="Assets\_Complete-Game\Scripts\Done_BGScroller.cs" />
     <Compile Include="Assets\_Complete-Game\Scripts\Done_DestroyByBoundary.cs" />
     <Compile Include="Assets\_Complete-Game\Scripts\Done_DestroyByContact.cs" />
@@ -104,10 +101,18 @@
     <Compile Include="Assets\Scripts\AsteroideSuperposicion.cs" />
     <Compile Include="Assets\Scripts\Comun\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Comun\Menu.cs" />
+    <Compile Include="Assets\Scripts\esquivarMeteoritos\AnimacionBGEsquivarMeteoritosControlador.cs" />
+    <Compile Include="Assets\Scripts\esquivarMeteoritos\EsquivarMeteoritosApp.cs" />
+    <Compile Include="Assets\Scripts\esquivarMeteoritos\EsquivarMeteoritosControlador.cs" />
+    <Compile Include="Assets\Scripts\esquivarMeteoritos\EsquivarMeteoritosModelo.cs" />
+    <Compile Include="Assets\Scripts\esquivarMeteoritos\EsquivarMeteoritosVista.cs" />
+    <Compile Include="Assets\Scripts\esquivarMeteoritos\JugadorEsquivarMeteoritosControlador.cs" />
+    <Compile Include="Assets\Scripts\esquivarMeteoritos\OleadaEsquivarMeteoritosControlador.cs" />
     <Compile Include="Assets\Scripts\navegacion\NavegacionApp.cs" />
     <Compile Include="Assets\Scripts\navegacion\NavegacionControlador.cs" />
     <Compile Include="Assets\Scripts\navegacion\NavegacionModelo.cs" />
     <Compile Include="Assets\Scripts\navegacion\NavegacionVista.cs" />
+    <Compile Include="Assets\Scripts\recogerSuministros\AnimacionBGRecogerSuministrosControlador.cs" />
     <Compile Include="Assets\Scripts\recogerSuministros\GeneracionObjetos.cs" />
     <Compile Include="Assets\Scripts\recogerSuministros\JugadorRecogerSuministrosControlador.cs" />
     <Compile Include="Assets\Scripts\recogerSuministros\OleadaRecogerSuministrosControlador.cs" />

@@ -17,3 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/recogerSuministros.unity
     guid: 648f74ff1115f5d49ac6c094507ea008
+  - enabled: 1
+    path: Assets/esquivarMeteoritos.unity
+    guid: 2920a1754693ce54fbeddc9877111747
