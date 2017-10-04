@@ -6,6 +6,8 @@ Espacio/Obj/
 Espacio/UnityGenerated/
 Espacio/Library/
 Espacio/Assets/AssetStoreTools*
+.vs/
+Espacio/.vs/
 
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
