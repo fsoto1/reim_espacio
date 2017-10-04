@@ -8,7 +8,7 @@ public class RecogerSuministrosVista : RecogerSuministrosElement
 {
     public void OnGUI()
     {
-        if (SceneManager.GetActiveScene().name == "recogerSuministros")
+        if (SceneManager.GetActiveScene().name == "recogerSuministross")
         {
             GUIStyle style = new GUIStyle();
             style.fontSize = 30;

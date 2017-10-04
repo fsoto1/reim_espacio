@@ -112,6 +112,12 @@
     <Compile Include="Assets\Scripts\navegacion\NavegacionControlador.cs" />
     <Compile Include="Assets\Scripts\navegacion\NavegacionModelo.cs" />
     <Compile Include="Assets\Scripts\navegacion\NavegacionVista.cs" />
+    <Compile Include="Assets\Scripts\ordenarFiguras\ArrastrarOrdenarFigurasControlador.cs" />
+    <Compile Include="Assets\Scripts\ordenarFiguras\OrdenarFigurasApp.cs" />
+    <Compile Include="Assets\Scripts\ordenarFiguras\OrdenarFigurasControlador.cs" />
+    <Compile Include="Assets\Scripts\ordenarFiguras\OrdenarFigurasModelo.cs" />
+    <Compile Include="Assets\Scripts\ordenarFiguras\OrdenarFigurasVista.cs" />
+    <Compile Include="Assets\Scripts\ordenarFiguras\RotarOrdenarFigurasControlador.cs" />
     <Compile Include="Assets\Scripts\recogerSuministros\AnimacionBGRecogerSuministrosControlador.cs" />
     <Compile Include="Assets\Scripts\recogerSuministros\GeneracionObjetos.cs" />
     <Compile Include="Assets\Scripts\recogerSuministros\JugadorRecogerSuministrosControlador.cs" />
