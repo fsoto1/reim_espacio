@@ -122,7 +122,7 @@
     <Compile Include="Assets\Scripts\recogerSuministros\GeneracionObjetos.cs" />
     <Compile Include="Assets\Scripts\recogerSuministros\JugadorRecogerSuministrosControlador.cs" />
     <Compile Include="Assets\Scripts\recogerSuministros\OleadaRecogerSuministrosControlador.cs" />
-    <Compile Include="Assets\Scripts\recogerSuministros\RecogerSuministrosApp.cs" />
+    <Compile Include="Assets\Scripts\recogerSuministros\recogerSuministrosApp.cs" />
     <Compile Include="Assets\Scripts\recogerSuministros\RecogerSuministrosControlador.cs" />
     <Compile Include="Assets\Scripts\recogerSuministros\RecogerSuministrosModelo.cs" />
     <Compile Include="Assets\Scripts\recogerSuministros\RecogerSuministrosVista.cs" />
