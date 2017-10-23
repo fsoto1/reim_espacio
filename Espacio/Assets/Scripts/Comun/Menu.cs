@@ -16,7 +16,7 @@ public class Menu : MonoBehaviour
 
     void Start()
     {
-        menu.SetActive(false);
+        menu.SetActive(true);
     }
 
     void FixedUpdate()

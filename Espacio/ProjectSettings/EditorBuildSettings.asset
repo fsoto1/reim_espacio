@@ -23,3 +23,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ordenarFiguras.unity
     guid: a476262f2a20f7344a16ef1ab8c5da20
+  - enabled: 1
+    path: Assets/recolectarObjetos.unity
+    guid: 351252b91c604df438fc9d32feee8c2f

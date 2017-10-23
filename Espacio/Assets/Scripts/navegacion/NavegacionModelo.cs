@@ -6,10 +6,11 @@ using UnityEngine;
 public class NavegacionModelo : NavegacionElement
 {
 
-    private int energia;
+    private float energia;
+    private float maxEnergia = 15f;
     private float velocidad_background = 0.25f;
 
-    public int Energia
+    public float Energia
     {
         get
         {
@@ -32,6 +33,19 @@ public class NavegacionModelo : NavegacionElement
         set
         {
             velocidad_background = value;
+        }
+    }
+
+    public float MaxEnergia
+    {
+        get
+        {
+            return maxEnergia;
+        }
+
+        set
+        {
+            maxEnergia = value;
         }
     }
 }
