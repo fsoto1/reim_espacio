@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class JugadorEsquivarMeteoritosControlador : EsquivarMeteoritosControlador
+public class JugadorEsquivarMeteoritosControlador : EsquivarMeteoritosElement
 {
     private Vector3 coordenadas;
     private Vector3 posicion;
@@ -12,7 +12,7 @@ public class JugadorEsquivarMeteoritosControlador : EsquivarMeteoritosControlado
 
     public void moverJugador()
     {
-        app.modelo.Duracion = Time.timeSinceLevelLoad;
+        
 
         posicion.x = Input.acceleration.x;
         app.modelo.Acelerometro = posicion.x;
@@ -35,16 +35,11 @@ public class JugadorEsquivarMeteoritosControlador : EsquivarMeteoritosControlado
     private void Start()
     {
         app.modelo.Finalizado = false;
-
-
-  
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        moverJugador();     
-
-
+        moverJugador();
     }
 
     private void OnCollisionEnter(Collision collision)

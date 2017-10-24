@@ -10,10 +10,20 @@ public class RecogerSuministrosVista : RecogerSuministrosElement
     public Button volver;
     public Button ayuda;
 
+    public Image negro;
+    public Animator animador;
+
+    public IEnumerator faded()
+    {
+        animador.SetBool("Fade", true);
+        yield return new WaitUntil(() => negro.color.a == 1);
+        SceneManager.LoadScene("navegacion");
+    }
+
     public void volverClick()
     {
         Debug.Log("Volver!");
-        SceneManager.LoadScene("navegacion");
+        StartCoroutine(faded());
     }
 
     public void ayudaClick()
@@ -38,7 +48,7 @@ public class RecogerSuministrosVista : RecogerSuministrosElement
 
     public void OnGUI()
     {
-        if (SceneManager.GetActiveScene().name == "recogerSuministross")
+        if (SceneManager.GetActiveScene().name == "recogerSuministros")
         {
             GUIStyle style = new GUIStyle();
             style.fontSize = 30;

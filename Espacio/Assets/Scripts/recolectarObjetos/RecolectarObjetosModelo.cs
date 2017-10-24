@@ -20,6 +20,7 @@ public class RecolectarObjetosModelo : RecolectarObjetosElement
     private int cantidad_suministros;
     private string[] nombreColores;
     private int recolectados;
+    private float velocidad_background = 0.1f;
 
     public float Velocidad_jugador
     {
@@ -213,6 +214,19 @@ public class RecolectarObjetosModelo : RecolectarObjetosElement
         set
         {
             recolectados = value;
+        }
+    }
+
+    public float Velocidad_background
+    {
+        get
+        {
+            return velocidad_background;
+        }
+
+        set
+        {
+            velocidad_background = value;
         }
     }
 }

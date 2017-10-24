@@ -10,6 +10,9 @@ public class AlcanzarSateliteVista  : AlcanzarSateliteElement
     public Button volver;
     public Button ayuda;
 
+    public Image negro;
+    public Animator animador;
+
     
     public void OnGUI()
     {
@@ -23,10 +26,18 @@ public class AlcanzarSateliteVista  : AlcanzarSateliteElement
         }
     }
 
+
+    public IEnumerator faded()
+    {
+        animador.SetBool("Fade", true);
+        yield return new WaitUntil(() => negro.color.a == 1);
+        SceneManager.LoadScene("navegacion");
+    }
+
     public void volverClick()
     {
-        Debug.Log("Volver!");
-        SceneManager.LoadScene("navegacion");
+       Debug.Log("Volver!");
+       StartCoroutine(faded());
     }
 
     public void ayudaClick()

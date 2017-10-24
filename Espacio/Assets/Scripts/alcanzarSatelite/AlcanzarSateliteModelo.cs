@@ -13,6 +13,10 @@ public class AlcanzarSateliteModelo : AlcanzarSateliteElement
     private float duracion;
     private int toques;
     private float duracion_toques;
+    private float minX = -5f;
+    private float maxX = 6f;
+    private float minY = -3f;
+    private float maxY = 4f;
 
     public float Jugador_velocidad
     {
@@ -115,6 +119,58 @@ public class AlcanzarSateliteModelo : AlcanzarSateliteElement
         set
         {
             duracion_toques = value;
+        }
+    }
+
+    public float MinX
+    {
+        get
+        {
+            return minX;
+        }
+
+        set
+        {
+            minX = value;
+        }
+    }
+
+    public float MaxX
+    {
+        get
+        {
+            return maxX;
+        }
+
+        set
+        {
+            maxX = value;
+        }
+    }
+
+    public float MinY
+    {
+        get
+        {
+            return minY;
+        }
+
+        set
+        {
+            minY = value;
+        }
+    }
+
+    public float MaxY
+    {
+        get
+        {
+            return maxY;
+        }
+
+        set
+        {
+            maxY = value;
         }
     }
 }

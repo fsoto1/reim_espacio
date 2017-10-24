@@ -10,10 +10,20 @@ public class RecolectarObjetosVista : RecolectarObjetosElement
     public Button volver;
     public Button ayuda;
 
+    public Image negro;
+    public Animator animador;
+
+    public IEnumerator faded()
+    {
+        animador.SetBool("Fade", true);
+        yield return new WaitUntil(() => negro.color.a == 1);
+        SceneManager.LoadScene("navegacion");
+    }
+
     public void volverClick()
     {
         Debug.Log("Volver!");
-        SceneManager.LoadScene("navegacion");
+        StartCoroutine(faded());
     }
 
     public void ayudaClick()
@@ -59,7 +69,7 @@ public class RecolectarObjetosVista : RecolectarObjetosElement
 
     void Update()
     {
-        float x = Mathf.Repeat(Time.time * nav.modelo.Velocidad_background, 1);
+        float x = Mathf.Repeat(Time.time * app.modelo.Velocidad_background, 1);
         Vector2 offset = new Vector2(x, savedOffset.y);
         fondo.GetComponent<Renderer>().sharedMaterial.SetTextureOffset("_MainTex", offset);
     }

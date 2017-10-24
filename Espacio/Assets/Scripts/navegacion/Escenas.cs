@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Escenas : MonoBehaviour
 {
+    public Animator animador;
+    public Image negro;
+    private string escena;
     /*
     private void Update()
     {
@@ -25,10 +29,18 @@ public class Escenas : MonoBehaviour
         Debug.Log(collision.gameObject.name);
         if (!collision.gameObject.name.Contains("Borde") && !collision.gameObject.name.Contains("Limite"))
         {
-            SceneManager.LoadScene(collision.gameObject.name);
+            escena = collision.gameObject.name;
+            StartCoroutine(faded());
+            
+            //SceneManager.LoadScene(collision.gameObject.name);
         }
         
     }
 
-
+    public IEnumerator faded()
+    {
+        animador.SetBool("Fade", true);
+        yield return new WaitUntil(() => negro.color.a == 1);
+        SceneManager.LoadScene(escena);
+    }
 }

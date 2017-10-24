@@ -17,6 +17,11 @@ public class NavegacionControlador : NavegacionElement
     public GameObject limite2;
     public GameObject limite2Visual;
 
+    public GameObject actividad1;
+    public GameObject actividad2;
+    public GameObject actividad3;
+    public GameObject actividad4;
+    public GameObject actividad5;
     public void moverJugador()
     {
         if (Input.touchCount == 1)
@@ -35,16 +40,24 @@ public class NavegacionControlador : NavegacionElement
         }
         
     }
+
+    private void rotarPortales() {
+        actividad1.transform.Rotate(Vector3.up * Time.deltaTime * nav.modelo.VelocidadRotacion);
+        actividad2.transform.Rotate(Vector3.up * Time.deltaTime * nav.modelo.VelocidadRotacion);
+        actividad3.transform.Rotate(Vector3.up * Time.deltaTime * nav.modelo.VelocidadRotacion);
+        actividad4.transform.Rotate(Vector3.up * Time.deltaTime * nav.modelo.VelocidadRotacion);
+        actividad5.transform.Rotate(Vector3.up * Time.deltaTime * nav.modelo.VelocidadRotacion);
+    }
     
     private void FixedUpdate()
     {
         camara.transform.position = jugador.transform.position + offset;
         moverJugador();
+        rotarPortales();
     }
 
     private void Update()
     {
-        Debug.Log(jugador.GetComponent<Rigidbody>().velocity);
         jugador.GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
 
@@ -56,6 +69,13 @@ public class NavegacionControlador : NavegacionElement
         limite1Visual = GameObject.Find("Limite1Visual");
         limite2 = GameObject.Find("Limite2");
         limite2Visual = GameObject.Find("Limite2Visual");
+
+        actividad1 = GameObject.Find("alcanzarSatelite");
+        actividad2 = GameObject.Find("recolectarObjetos");
+        actividad3 = GameObject.Find("recogerSuministros");
+        actividad4 = GameObject.Find("ordenarFiguras");
+        actividad5 = GameObject.Find("esquivarMeteoritos");
+
         if (nav.modelo.Energia >= 5)
         {
             Destroy(limite1);
@@ -68,9 +88,6 @@ public class NavegacionControlador : NavegacionElement
         }
         jugador.transform.position = new Vector3(-20f, 0.0f, 0.0f);
         camara.transform.position = new Vector3(-20f, 0.0f, -5.0f);
-        //alcanzarSatelite = GameObject.Find("AS");
         offset = camara.transform.position - jugador.transform.position;
-        Debug.Log(offset);
-
     }
 }

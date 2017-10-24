@@ -95,12 +95,11 @@
     <Compile Include="Assets\Scripts\alcanzarSatelite\AlcanzarSateliteControlador.cs" />
     <Compile Include="Assets\Scripts\alcanzarSatelite\AlcanzarSateliteModelo.cs" />
     <Compile Include="Assets\Scripts\alcanzarSatelite\AlcanzarSateliteVista.cs" />
-    <Compile Include="Assets\Scripts\alcanzarSatelite\GenerarAsteroides.cs" />
     <Compile Include="Assets\Scripts\alcanzarSatelite\JugadorControlador.cs" />
-    <Compile Include="Assets\Scripts\alcanzarSatelite\RotarControlador.cs" />
     <Compile Include="Assets\Scripts\AsteroideSuperposicion.cs" />
     <Compile Include="Assets\Scripts\Comun\Borde.cs" />
     <Compile Include="Assets\Scripts\Comun\Interfaz.cs" />
+    <Compile Include="Assets\Scripts\Comun\Login.cs" />
     <Compile Include="Assets\Scripts\Comun\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Comun\Menu.cs" />
     <Compile Include="Assets\Scripts\Comun\Volver.cs" />
@@ -110,7 +109,6 @@
     <Compile Include="Assets\Scripts\esquivarMeteoritos\EsquivarMeteoritosModelo.cs" />
     <Compile Include="Assets\Scripts\esquivarMeteoritos\EsquivarMeteoritosVista.cs" />
     <Compile Include="Assets\Scripts\esquivarMeteoritos\JugadorEsquivarMeteoritosControlador.cs" />
-    <Compile Include="Assets\Scripts\esquivarMeteoritos\OleadaEsquivarMeteoritosControlador.cs" />
     <Compile Include="Assets\Scripts\navegacion\Escenas.cs" />
     <Compile Include="Assets\Scripts\navegacion\NavegacionApp.cs" />
     <Compile Include="Assets\Scripts\navegacion\NavegacionControlador.cs" />
@@ -123,9 +121,7 @@
     <Compile Include="Assets\Scripts\ordenarFiguras\OrdenarFigurasVista.cs" />
     <Compile Include="Assets\Scripts\ordenarFiguras\RotarOrdenarFigurasControlador.cs" />
     <Compile Include="Assets\Scripts\recogerSuministros\AnimacionBGRecogerSuministrosControlador.cs" />
-    <Compile Include="Assets\Scripts\recogerSuministros\GeneracionObjetos.cs" />
     <Compile Include="Assets\Scripts\recogerSuministros\JugadorRecogerSuministrosControlador.cs" />
-    <Compile Include="Assets\Scripts\recogerSuministros\OleadaRecogerSuministrosControlador.cs" />
     <Compile Include="Assets\Scripts\recogerSuministros\recogerSuministrosApp.cs" />
     <Compile Include="Assets\Scripts\recogerSuministros\RecogerSuministrosControlador.cs" />
     <Compile Include="Assets\Scripts\recogerSuministros\RecogerSuministrosModelo.cs" />

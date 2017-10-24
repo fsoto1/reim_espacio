@@ -31,7 +31,6 @@ public class JugadorRecolectarObjetosControlador : RecolectarObjetosElement
 
     private void OnCollisionEnter(Collision collision)
     {
-        // Debug.Log(collision.gameObject.GetComponent<Renderer>().sharedMaterial.name);
         encontrado = false;
         foreach (var nombre in app.modelo.NombreColores)
         {
@@ -46,10 +45,17 @@ public class JugadorRecolectarObjetosControlador : RecolectarObjetosElement
         {
             app.modelo.Cantidad_colisiones++;
         }
+        else
+        {
+            if (app.modelo.Recolectados % 10 == 0)
+            {
+                nav.modelo.Energia++;
+            }
+        }
     }
   
 
-    private void Update()
+    private void FixedUpdate()
     {
         moverJugador();
     }

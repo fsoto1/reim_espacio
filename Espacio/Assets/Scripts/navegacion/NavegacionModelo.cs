@@ -9,6 +9,7 @@ public class NavegacionModelo : NavegacionElement
     private float energia;
     private float maxEnergia = 15f;
     private float velocidad_background = 0.25f;
+    private float velocidadRotacion = 20f;
 
     public float Energia
     {
@@ -46,6 +47,19 @@ public class NavegacionModelo : NavegacionElement
         set
         {
             maxEnergia = value;
+        }
+    }
+
+    public float VelocidadRotacion
+    {
+        get
+        {
+            return velocidadRotacion;
+        }
+
+        set
+        {
+            velocidadRotacion = value;
         }
     }
 }

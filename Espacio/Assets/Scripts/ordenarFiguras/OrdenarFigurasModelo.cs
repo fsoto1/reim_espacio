@@ -13,6 +13,7 @@ public class OrdenarFigurasModelo : OrdenarFigurasElement
     private float duracion;
     private int toques;
     private float duracion_toques;
+    private bool recompensa;
 
     public float Jugador_velocidad
     {
@@ -115,6 +116,19 @@ public class OrdenarFigurasModelo : OrdenarFigurasElement
         set
         {
             duracion_toques = value;
+        }
+    }
+
+    public bool Recompensa
+    {
+        get
+        {
+            return recompensa;
+        }
+
+        set
+        {
+            recompensa = value;
         }
     }
 }

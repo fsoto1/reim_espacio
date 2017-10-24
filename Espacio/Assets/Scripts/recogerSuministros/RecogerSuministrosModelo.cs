@@ -11,7 +11,7 @@ public class RecogerSuministrosModelo : RecogerSuministrosElement
     private int oleada_total = 30;
     private float tiempo_espera_aparicion = 0.5f;
     private float tiempo_espera_oleada = 3f;
-    private float velocidad_objetos = 3f;
+    private float velocidad_objetos = 5f;
     private int cantidad_colisiones;
     private bool finalizado;
     private float duracion;

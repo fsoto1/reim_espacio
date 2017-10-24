@@ -7,7 +7,6 @@ public class JugadorRecogerSuministrosControlador : RecogerSuministrosControlado
 {
     private Vector3 coordenadas;
     private Vector3 posicion;
-
     public void moverJugador()
     {
         app.modelo.Duracion = Time.timeSinceLevelLoad;
@@ -15,8 +14,6 @@ public class JugadorRecogerSuministrosControlador : RecogerSuministrosControlado
         {
             coordenadas = new Vector3(Input.GetTouch(0).position.x, Input.GetTouch(0).position.y, 5f);
             posicion = Camera.main.ScreenToWorldPoint(coordenadas);
-            //transform.LookAt(posicion);
-            //transform.Rotate(new Vector3(0, 0, -90));
             transform.position = Vector3.Lerp(transform.position, posicion, app.modelo.Velocidad_jugador * Time.deltaTime);
             app.modelo.Duracion_toques += Time.deltaTime;
                 
@@ -33,14 +30,9 @@ public class JugadorRecogerSuministrosControlador : RecogerSuministrosControlado
         app.modelo.Finalizado = false;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         moverJugador();
-        if (app.modelo.Cantidad_suministros == 10 && !app.modelo.Finalizado)
-        {
-            app.modelo.Finalizado = true;
-            nav.modelo.Energia++;
-        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -49,10 +41,15 @@ public class JugadorRecogerSuministrosControlador : RecogerSuministrosControlado
         {
             Destroy(collision.gameObject);
             app.modelo.Cantidad_suministros++;
+
+            if (app.modelo.Cantidad_suministros % 10 == 0)
+            {
+                nav.modelo.Energia++;
+            }
         }
         else
         {
-            app.modelo.Cantidad_colisiones++;
+            app.modelo.Cantidad_colisiones++;            
         }
     }
 

@@ -33,7 +33,7 @@ public class OrdenarFigurasControlador : OrdenarFigurasElement
     private bool ep8;
     private bool ep9;
 
-    float minDistance = 0.5f;
+    float minDistance = 0.7f;
 
     private void toques()
     {
@@ -279,6 +279,11 @@ public class OrdenarFigurasControlador : OrdenarFigurasElement
         toques();
         posiciones();
         comparar();
+        if (app.modelo.Finalizado && !app.modelo.Recompensa)
+        {
+            nav.modelo.Energia += 2;
+            app.modelo.Recompensa = true;
+        }
     }
     private void Start()
     {

@@ -7,7 +7,6 @@ public class JugadorControlador : AlcanzarSateliteControlador
 {
     private Vector3 coordenadas;
     private Vector3 posicion;
-    private float velocidad = app.modelo.Jugador_velocidad;
 
     public void moverJugador()
     {
@@ -19,20 +18,20 @@ public class JugadorControlador : AlcanzarSateliteControlador
                 posicion = Camera.main.ScreenToWorldPoint(coordenadas);
                 transform.LookAt(posicion);
                 transform.Rotate(new Vector3(0, 0, -90));
-                transform.position = Vector3.Lerp(transform.position, posicion, velocidad * Time.deltaTime);
+                transform.position = Vector3.Lerp(transform.position, posicion, app.modelo.Jugador_velocidad * Time.deltaTime);
             }
 
         }
     }
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "Space_object_O")
+        if (collision.gameObject.name == "Satelite")
         {
             app.modelo.Finalizado = true;
-            
+            nav.modelo.Energia++;
             Destroy(collision.gameObject);
             SceneManager.LoadScene("alcanzarSatelite");
-            nav.modelo.Energia++;
+            
            
 
         }
@@ -42,11 +41,17 @@ public class JugadorControlador : AlcanzarSateliteControlador
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         moverJugador();
         toques();
     }
+
+    private void Update()
+    {
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
+    }
+
     private void Start()
     {
         reiniciarValores();
