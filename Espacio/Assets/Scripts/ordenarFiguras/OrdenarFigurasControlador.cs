@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class OrdenarFigurasControlador : OrdenarFigurasElement
 {
@@ -32,6 +32,8 @@ public class OrdenarFigurasControlador : OrdenarFigurasElement
     private bool ep7;
     private bool ep8;
     private bool ep9;
+
+    public AudioClip energiaClip;
 
     float minDistance = 0.7f;
 
@@ -273,6 +275,11 @@ public class OrdenarFigurasControlador : OrdenarFigurasElement
             ;
     }
 
+    public IEnumerator finalizar()
+    {
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene("ordenarFiguras");
+    }
 
     private void Update()
     {
@@ -281,12 +288,16 @@ public class OrdenarFigurasControlador : OrdenarFigurasElement
         comparar();
         if (app.modelo.Finalizado && !app.modelo.Recompensa)
         {
+            GetComponent<AudioSource>().clip = energiaClip;
+            GetComponent<AudioSource>().Play();
             nav.modelo.Energia += 2;
             app.modelo.Recompensa = true;
+            StartCoroutine(finalizar());
         }
     }
     private void Start()
     {
+        app.modelo.Recompensa = false;
         reiniciarValores();
         cargarObjetos();
         cargarPizarra();

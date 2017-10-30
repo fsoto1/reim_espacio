@@ -4,11 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Escenas : MonoBehaviour
+public class Escenas : NavegacionElement
 {
     public Animator animador;
     public Image negro;
     private string escena;
+    public AudioClip entrar;
+    private bool puerta = true;
+
     /*
     private void Update()
     {
@@ -26,20 +29,37 @@ public class Escenas : MonoBehaviour
     */
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.name);
-        if (!collision.gameObject.name.Contains("Borde") && !collision.gameObject.name.Contains("Limite"))
+        escena = collision.gameObject.name;
+        if (!escena.Contains("Borde") && !escena.Contains("Limite") && puerta)
         {
-            escena = collision.gameObject.name;
+            puerta = false;
+            if (escena == "recogerSuministros")
+            {
+                nav.modelo.Energia -= 1;
+            }
+            else if (escena == "recolectarObjetos")
+            {
+                nav.modelo.Energia -= 2;
+            }
+            else if (escena == "ordenarFiguras")
+            {
+                nav.modelo.Energia -= 3;
+            }
+            else if (escena == "esquivarMeteoritos")
+            {
+                nav.modelo.Energia -= 4;
+            }
             StartCoroutine(faded());
-            
-            //SceneManager.LoadScene(collision.gameObject.name);
         }
-        
+
     }
 
     public IEnumerator faded()
     {
         animador.SetBool("Fade", true);
+        GetComponent<AudioSource>().clip = entrar;
+        GetComponent<AudioSource>().Play();
+        //yield return new WaitForSeconds(entrar.length);
         yield return new WaitUntil(() => negro.color.a == 1);
         SceneManager.LoadScene(escena);
     }

@@ -12,16 +12,18 @@ public class NavegacionControlador : NavegacionElement
     //private GameObject alcanzarSatelite;
     private Vector3 offset;
     public Camera camara;
-    public GameObject limite1;
-    public GameObject limite1Visual;
-    public GameObject limite2;
-    public GameObject limite2Visual;
+    private GameObject limite1;
+    private GameObject limite1Visual;
+    private GameObject limite2;
+    private GameObject limite2Visual;
 
-    public GameObject actividad1;
-    public GameObject actividad2;
-    public GameObject actividad3;
-    public GameObject actividad4;
-    public GameObject actividad5;
+    private GameObject actividad1;
+    private GameObject actividad2;
+    private GameObject actividad3;
+    private GameObject actividad4;
+    private GameObject actividad5;
+
+
     public void moverJugador()
     {
         if (Input.touchCount == 1)

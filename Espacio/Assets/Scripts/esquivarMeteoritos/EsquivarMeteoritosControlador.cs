@@ -44,14 +44,6 @@ public class EsquivarMeteoritosControlador : EsquivarMeteoritosElement
         }
     }
 
-    public IEnumerator ganarEnergia()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(15);
-            nav.modelo.Energia++;
-        }
-    }
 
     private void Update()
     {
@@ -60,8 +52,7 @@ public class EsquivarMeteoritosControlador : EsquivarMeteoritosElement
     
     void Start()
     {
-        StartCoroutine(generarOleada());
-        StartCoroutine(ganarEnergia());
+        StartCoroutine(generarOleada());        
         app.modelo.Cantidad_colisiones = 0;
         app.modelo.Acelerometro = 0f;
         app.modelo.Duracion = 0;

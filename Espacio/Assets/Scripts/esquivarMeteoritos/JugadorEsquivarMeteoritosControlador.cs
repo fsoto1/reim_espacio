@@ -9,6 +9,8 @@ public class JugadorEsquivarMeteoritosControlador : EsquivarMeteoritosElement
     private Vector3 posicion;
     private Gyroscope gyro;
     private Quaternion rotacion;
+    public AudioClip energiaClip;
+    public AudioClip choqueClip;
 
     public void moverJugador()
     {
@@ -32,9 +34,21 @@ public class JugadorEsquivarMeteoritosControlador : EsquivarMeteoritosElement
         }
     }
 
+    public IEnumerator ganarEnergia()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(15);
+            nav.modelo.Energia++;
+            GetComponent<AudioSource>().clip = energiaClip;
+            GetComponent<AudioSource>().Play();
+        }
+    }
+
     private void Start()
     {
         app.modelo.Finalizado = false;
+        StartCoroutine(ganarEnergia());
     }
 
     private void FixedUpdate()
@@ -45,7 +59,9 @@ public class JugadorEsquivarMeteoritosControlador : EsquivarMeteoritosElement
     private void OnCollisionEnter(Collision collision)
     {
 
-         app.modelo.Cantidad_colisiones++;
+        app.modelo.Cantidad_colisiones++;
+        GetComponent<AudioSource>().clip = choqueClip;
+        GetComponent<AudioSource>().Play();
     }
 
 

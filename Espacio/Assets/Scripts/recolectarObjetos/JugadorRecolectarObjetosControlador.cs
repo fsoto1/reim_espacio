@@ -7,7 +7,9 @@ public class JugadorRecolectarObjetosControlador : RecolectarObjetosElement
 {
     private Vector3 coordenadas;
     private Vector3 posicion;
-    bool encontrado;
+    private bool encontrado;
+    public AudioClip choqueClip;
+    public AudioClip energiaClip;
 
     public void moverJugador()
     {
@@ -39,11 +41,15 @@ public class JugadorRecolectarObjetosControlador : RecolectarObjetosElement
                 Destroy(collision.gameObject);
                 encontrado = true;
                 app.modelo.Recolectados++;
+                GetComponent<AudioSource>().clip = energiaClip;
+                GetComponent<AudioSource>().Play();
             }
         }
         if (!encontrado)
         {
             app.modelo.Cantidad_colisiones++;
+            GetComponent<AudioSource>().clip = choqueClip;
+            GetComponent<AudioSource>().Play();
         }
         else
         {

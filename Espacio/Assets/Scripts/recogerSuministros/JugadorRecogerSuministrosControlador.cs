@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class JugadorRecogerSuministrosControlador : RecogerSuministrosControlador
+public class JugadorRecogerSuministrosControlador : RecogerSuministrosElement
 {
     private Vector3 coordenadas;
     private Vector3 posicion;
+    public AudioClip choqueClip;
+    public AudioClip energiaClip;
+
     public void moverJugador()
     {
         app.modelo.Duracion = Time.timeSinceLevelLoad;
@@ -41,15 +44,18 @@ public class JugadorRecogerSuministrosControlador : RecogerSuministrosControlado
         {
             Destroy(collision.gameObject);
             app.modelo.Cantidad_suministros++;
-
+            GetComponent<AudioSource>().clip = energiaClip;
+            GetComponent<AudioSource>().Play();
             if (app.modelo.Cantidad_suministros % 10 == 0)
             {
-                nav.modelo.Energia++;
+                nav.modelo.Energia++;                
             }
         }
         else
         {
-            app.modelo.Cantidad_colisiones++;            
+            app.modelo.Cantidad_colisiones++;
+            GetComponent<AudioSource>().clip = choqueClip;
+            GetComponent<AudioSource>().Play();
         }
     }
 
