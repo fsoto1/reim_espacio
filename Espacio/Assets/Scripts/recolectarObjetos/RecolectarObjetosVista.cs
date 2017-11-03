@@ -22,19 +22,18 @@ public class RecolectarObjetosVista : RecolectarObjetosElement
 
     public void volverClick()
     {
-        Debug.Log("Volver!");
+        StartCoroutine(nav.general.enviarBd(nav.general.RecolectarObjectos, app.modelo.Toques, app.modelo.Duracion_toques, app.modelo.Cantidad_colisiones, app.modelo.ErroresGen,app.modelo.Recolectados, app.modelo.AciertosGen, 1, app.modelo.Ayudas, app.modelo.Duracion));
         StartCoroutine(faded());
     }
 
     public void ayudaClick()
     {
-        Debug.Log("Ayuda!");
+        app.modelo.Ayudas++;
     }
 
     private void LateUpdate()
     {
-
-        barra.value = calcular();
+       barra.value = calcular();
     }
     private float calcular()
     {
@@ -52,7 +51,8 @@ public class RecolectarObjetosVista : RecolectarObjetosElement
             style.normal.textColor = Color.white;
             GUI.Label(new Rect(0, 0, 100, 100), "Colisiones: " + app.modelo.Cantidad_colisiones + " | Finalizado " + app.modelo.Finalizado + 
                 " | Touch " + app.modelo.Toques + "\n | Tiempo mov " + app.modelo.Duracion_toques + " | Duracion " + app.modelo.Duracion + 
-                " | Energia " + nav.modelo.Energia + "\n | Objetos recolectados " + app.modelo.Recolectados, style);
+                " | Energia " + nav.modelo.Energia + "\n | Objetos recolectados " + app.modelo.Recolectados +
+                " | AciertosGen " + app.modelo.AciertosGen + "| ErroresGen " + app.modelo.ErroresGen, style);
 
         }
     }

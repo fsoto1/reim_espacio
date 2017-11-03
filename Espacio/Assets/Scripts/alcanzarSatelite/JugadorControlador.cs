@@ -16,15 +16,13 @@ public class JugadorControlador : AlcanzarSateliteElement
         {
             if (Input.touchCount == 1)
             {
-                app.modelo.Duracion_toques += Time.deltaTime;
-                if (Input.GetTouch(0).phase == TouchPhase.Moved)
-                {
-                    coordenadas = new Vector3(Input.GetTouch(0).position.x, Input.GetTouch(0).position.y, 5f);
-                    posicion = Camera.main.ScreenToWorldPoint(coordenadas);
-                    transform.LookAt(posicion);
-                    transform.Rotate(new Vector3(0, 0, -90));
-                    transform.position = Vector3.Lerp(transform.position, posicion, app.modelo.Jugador_velocidad * Time.deltaTime);
-                }
+                app.modelo.Duracion_toques += Time.deltaTime;               
+                coordenadas = new Vector3(Input.GetTouch(0).position.x, Input.GetTouch(0).position.y, 5f);
+                posicion = Camera.main.ScreenToWorldPoint(coordenadas);
+                transform.LookAt(posicion);
+                transform.Rotate(new Vector3(0, 0, -90));
+                transform.position = Vector3.Lerp(transform.position, posicion, app.modelo.Jugador_velocidad * Time.deltaTime);
+                
                 if (Input.GetTouch(0).phase == TouchPhase.Began)
                 {
                     app.modelo.Toques++;
@@ -45,17 +43,16 @@ public class JugadorControlador : AlcanzarSateliteElement
         if (collision.gameObject.name == "Satelite")
         {
             reproduceAudio(1);
+            StartCoroutine(nav.general.enviarBd(nav.general.AlcanzarSatelite, app.modelo.Toques, app.modelo.Duracion_toques, app.modelo.Cantidad_colisiones, app.modelo.Cantidad_colisiones, 1, 1, 1, app.modelo.Ayudas, app.modelo.Duracion));
             app.modelo.Finalizado = true;
             nav.modelo.Energia++;
-            Destroy(collision.gameObject);
-            StartCoroutine(finalizar());    
+            Destroy(collision.gameObject);            
+            StartCoroutine(finalizar());
         }
         else
         {
             app.modelo.Cantidad_colisiones++;
             reproduceAudio(0);
-            //crash.LoadAudioData();
-            //StartCoroutine(audioColision());
         }
     }
 
@@ -64,19 +61,7 @@ public class JugadorControlador : AlcanzarSateliteElement
         GetComponent<AudioSource>().clip = sonido[i];
         GetComponent<AudioSource>().Play();
     }
-    /*
-    public void toques()
-    {
-        
-        if (Input.touchCount == 1)
-        {
-            
-            if (Input.GetTouch(0).phase == TouchPhase.Began)
-            {
-                
-            }
-        }
-    }*/
+
     public void reiniciarValores()
     {
         app.modelo.Cantidad_colisiones = 0;
@@ -88,7 +73,6 @@ public class JugadorControlador : AlcanzarSateliteElement
     void FixedUpdate()
     {
         moverJugador();
-        //toques();
     }
 
     private void Update()
@@ -99,6 +83,5 @@ public class JugadorControlador : AlcanzarSateliteElement
     private void Start()
     {
         reiniciarValores();
-        //audio = GetComponent<AudioSource>();
     }
 }

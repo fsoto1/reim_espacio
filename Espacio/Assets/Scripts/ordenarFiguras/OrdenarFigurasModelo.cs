@@ -7,13 +7,14 @@ public class OrdenarFigurasModelo : OrdenarFigurasElement
 
     public float jugador_velocidad = 5f;
     public float velocidad_rotacion = 5f;
-    public int cantidad_asteroides = 5;
-    private int cantidad_colisiones;
     private bool finalizado;
     private float duracion;
     private int toques;
     private float duracion_toques;
-    private bool recompensa;
+    private bool recompensa;    
+    private int ayudas;
+    private int aciertos;
+    private int aciertosGen;
 
     public float Jugador_velocidad
     {
@@ -38,32 +39,6 @@ public class OrdenarFigurasModelo : OrdenarFigurasElement
         set
         {
             velocidad_rotacion = value;
-        }
-    }
-
-    public int Cantidad_asteroides
-    {
-        get
-        {
-            return cantidad_asteroides;
-        }
-
-        set
-        {
-            cantidad_asteroides = value;
-        }
-    }
-
-    public int Cantidad_colisiones
-    {
-        get
-        {
-            return cantidad_colisiones;
-        }
-
-        set
-        {
-            cantidad_colisiones = value;
         }
     }
 
@@ -129,6 +104,45 @@ public class OrdenarFigurasModelo : OrdenarFigurasElement
         set
         {
             recompensa = value;
+        }
+    }
+
+    public int Ayudas
+    {
+        get
+        {
+            return ayudas;
+        }
+
+        set
+        {
+            ayudas = value;
+        }
+    }
+
+    public int Aciertos
+    {
+        get
+        {
+            return aciertos;
+        }
+
+        set
+        {
+            aciertos = value;
+        }
+    }
+
+    public int AciertosGen
+    {
+        get
+        {
+            return aciertosGen;
+        }
+
+        set
+        {
+            aciertosGen = value;
         }
     }
 }

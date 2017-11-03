@@ -18,6 +18,8 @@ public class EsquivarMeteoritosModelo : EsquivarMeteoritosElement
     private float min_posicion = -7.5f;
     private float max_posicion = 7.5f;
     private float acelerometro ;
+    private int ayudas;
+    private int meteoritosGen;
 
     public float Velocidad_jugador
     {
@@ -185,6 +187,32 @@ public class EsquivarMeteoritosModelo : EsquivarMeteoritosElement
         set
         {
             acelerometro = value;
+        }
+    }
+
+    public int Ayudas
+    {
+        get
+        {
+            return ayudas;
+        }
+
+        set
+        {
+            ayudas = value;
+        }
+    }
+
+    public int MeteoritosGen
+    {
+        get
+        {
+            return meteoritosGen;
+        }
+
+        set
+        {
+            meteoritosGen = value;
         }
     }
 }

@@ -17,10 +17,12 @@ public class RecolectarObjetosModelo : RecolectarObjetosElement
     private float duracion;
     private int toques;
     private float duracion_toques;
-    private int cantidad_suministros;
     private string[] nombreColores;
     private int recolectados;
     private float velocidad_background = 0.1f;
+    private int ayudas;
+    private int erroresGen;
+    private int aciertosGen;
 
     public float Velocidad_jugador
     {
@@ -165,19 +167,6 @@ public class RecolectarObjetosModelo : RecolectarObjetosElement
         }
     }
 
-    public int Cantidad_suministros
-    {
-        get
-        {
-            return cantidad_suministros;
-        }
-
-        set
-        {
-            cantidad_suministros = value;
-        }
-    }
-
     public float Velocidad_rotacion
     {
         get
@@ -227,6 +216,45 @@ public class RecolectarObjetosModelo : RecolectarObjetosElement
         set
         {
             velocidad_background = value;
+        }
+    }
+
+    public int Ayudas
+    {
+        get
+        {
+            return ayudas;
+        }
+
+        set
+        {
+            ayudas = value;
+        }
+    }
+
+    public int ErroresGen
+    {
+        get
+        {
+            return erroresGen;
+        }
+
+        set
+        {
+            erroresGen = value;
+        }
+    }
+
+    public int AciertosGen
+    {
+        get
+        {
+            return aciertosGen;
+        }
+
+        set
+        {
+            aciertosGen = value;
         }
     }
 }

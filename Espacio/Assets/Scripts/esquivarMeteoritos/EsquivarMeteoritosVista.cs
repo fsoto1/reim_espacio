@@ -21,13 +21,13 @@ public class EsquivarMeteoritosVista : EsquivarMeteoritosElement
 
     public void volverClick()
     {
-        Debug.Log("Volver!");
+        StartCoroutine(nav.general.enviarBd(nav.general.EsquivarMeteoritos, 0, 0f, app.modelo.Cantidad_colisiones, app.modelo.MeteoritosGen, 0, 0, 1, app.modelo.Ayudas, app.modelo.Duracion));
         StartCoroutine(faded());
     }
 
     public void ayudaClick()
     {
-        Debug.Log("Ayuda!");
+        app.modelo.Ayudas++;
     }
 
     private void Start()
@@ -54,7 +54,7 @@ public class EsquivarMeteoritosVista : EsquivarMeteoritosElement
             style.normal.textColor = Color.white;
             GUI.Label(new Rect(0, 0, 100, 100), "Colisiones: " + app.modelo.Cantidad_colisiones + " | Finalizado " + app.modelo.Finalizado + 
                 " | Acelerometro " + app.modelo.Acelerometro + "\n | Duracion " + app.modelo.Duracion + 
-                " | Energia " + nav.modelo.Energia , style);
+                " | Energia " + nav.modelo.Energia + " | Generados" + app.modelo.MeteoritosGen, style);
 
         }
     }

@@ -38,6 +38,7 @@ public class EsquivarMeteoritosControlador : EsquivarMeteoritosElement
                 }
                 clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.down * app.modelo.Velocidad_objetos);
                 clone.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * app.modelo.Velocidad_rotacion;
+                app.modelo.MeteoritosGen++;
                 yield return new WaitForSeconds(app.modelo.Tiempo_espera_aparicion);
             }
             yield return new WaitForSeconds(app.modelo.Tiempo_espera_oleada);

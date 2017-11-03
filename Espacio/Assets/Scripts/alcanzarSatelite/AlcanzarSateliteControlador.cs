@@ -56,6 +56,7 @@ public class AlcanzarSateliteControlador : AlcanzarSateliteElement
         app.modelo.Duracion = 0f;
         app.modelo.Duracion_toques = 0f;
         app.modelo.Toques = 0;
+        app.modelo.Ayudas = 0;
         app.modelo.Finalizado = false;
     }
 

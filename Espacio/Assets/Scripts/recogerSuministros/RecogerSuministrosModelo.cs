@@ -18,6 +18,9 @@ public class RecogerSuministrosModelo : RecogerSuministrosElement
     private int toques;
     private float duracion_toques;
     private int cantidad_suministros;
+    private int ayudas;
+    private int suministrosGen;
+    private int meteoritosGen;
 
     public float Velocidad_jugador
     {
@@ -185,6 +188,45 @@ public class RecogerSuministrosModelo : RecogerSuministrosElement
         set
         {
             velocidad_rotacion = value;
+        }
+    }
+
+    public int Ayudas
+    {
+        get
+        {
+            return ayudas;
+        }
+
+        set
+        {
+            ayudas = value;
+        }
+    }
+
+    public int SuministrosGen
+    {
+        get
+        {
+            return suministrosGen;
+        }
+
+        set
+        {
+            suministrosGen = value;
+        }
+    }
+
+    public int MeteoritosGen
+    {
+        get
+        {
+            return meteoritosGen;
+        }
+
+        set
+        {
+            meteoritosGen = value;
         }
     }
 }

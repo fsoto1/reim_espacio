@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class NavegacionVista : NavegacionElement
@@ -12,6 +13,7 @@ public class NavegacionVista : NavegacionElement
     public void volverClick()
     {
         Debug.Log("Volver!");
+        SceneManager.LoadScene("login");
     }
 
     public void ayudaClick()
@@ -32,6 +34,18 @@ public class NavegacionVista : NavegacionElement
     private float calcular()
     {
         return nav.modelo.Energia / nav.modelo.MaxEnergia;
+    }
+
+    public void OnGUI()
+    {
+        if (SceneManager.GetActiveScene().name == "navegacion")
+        {
+            GUIStyle style = new GUIStyle();
+            style.fontSize = 30;
+            style.normal.textColor = Color.white;
+            GUI.Label(new Rect(0, 0, 100, 100), "ALUMNO: "+ nav.general.IdAlumno, style);
+
+        }
     }
 
 }

@@ -21,7 +21,8 @@ public class AlcanzarSateliteVista  : AlcanzarSateliteElement
             GUIStyle style = new GUIStyle();
             style.fontSize = 30;
             style.normal.textColor = Color.white;
-            GUI.Label(new Rect(0, 0, 100, 100), "Colisiones: " + app.modelo.Cantidad_colisiones + " | Finalizado " + app.modelo.Finalizado + " | Touch " + app.modelo.Toques + "\n | Tiempo mov " + app.modelo.Duracion_toques + " | Duracion " + app.modelo.Duracion + " | Energia " + nav.modelo.Energia, style);
+            GUI.Label(new Rect(0, 0, 100, 100), "Colisiones: " + app.modelo.Cantidad_colisiones + " | Finalizado " + app.modelo.Finalizado + " | Touch " + app.modelo.Toques + "\n | Tiempo mov " + app.modelo.Duracion_toques + 
+                " | Duracion " + app.modelo.Duracion + " | Energia " + nav.modelo.Energia + "\n | Ayudas " + app.modelo.Ayudas, style);
 
         }
     }
@@ -36,13 +37,13 @@ public class AlcanzarSateliteVista  : AlcanzarSateliteElement
 
     public void volverClick()
     {
-       Debug.Log("Volver!");
+       StartCoroutine(nav.general.enviarBd(nav.general.AlcanzarSatelite, app.modelo.Toques, app.modelo.Duracion_toques, app.modelo.Cantidad_colisiones, app.modelo.Cantidad_asteroides, 0, 1, 0, app.modelo.Ayudas, app.modelo.Duracion));
        StartCoroutine(faded());
     }
 
     public void ayudaClick()
     {
-        Debug.Log("Ayuda!");
+        app.modelo.Ayudas++;
     }
     private void Start()
     {

@@ -11,6 +11,7 @@ public class RecolectarObjetosControlador : RecolectarObjetosElement
     private Vector3 coordenadas;
     private Vector3 posicion;
     private int[] numColores;
+    private bool encontrado;
 
     private void cargarColores()
     {
@@ -57,6 +58,19 @@ public class RecolectarObjetosControlador : RecolectarObjetosElement
                 clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.left * app.modelo.Velocidad_objetos);
                 clone.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * app.modelo.Velocidad_rotacion;
                 clone.GetComponent<Renderer>().sharedMaterial = colores[Random.Range(0,colores.Length)];
+                encontrado = false;
+                foreach (var nombre in app.modelo.NombreColores)
+                {
+                    if (nombre == clone.GetComponent<Renderer>().sharedMaterial.name)
+                    {
+                        encontrado = true;
+                        app.modelo.AciertosGen++;
+                    }
+                }
+                if (!encontrado)
+                {
+                    app.modelo.ErroresGen++;
+                }
                 yield return new WaitForSeconds(app.modelo.Tiempo_espera_aparicion);
             }
             yield return new WaitForSeconds(app.modelo.Tiempo_espera_oleada);
@@ -66,7 +80,6 @@ public class RecolectarObjetosControlador : RecolectarObjetosElement
     {
         StartCoroutine(generarOleada());
         app.modelo.Cantidad_colisiones = 0;
-        app.modelo.Cantidad_suministros = 0;
         app.modelo.Duracion = 0f;
         app.modelo.Duracion_toques = 0f;
         app.modelo.Toques = 0;

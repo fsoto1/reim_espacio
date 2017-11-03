@@ -22,13 +22,14 @@ public class OrdenarFigurasVista  : OrdenarFigurasElement
 
     public void volverClick()
     {
-        Debug.Log("Volver!");
+        app.controlador.salir();
+        StartCoroutine(nav.general.enviarBd(nav.general.OrdenarFiguras, app.modelo.Toques, app.modelo.Duracion_toques, 0, 0, app.modelo.Aciertos, app.modelo.AciertosGen, 0, app.modelo.Ayudas, app.modelo.Duracion));
         StartCoroutine(faded());
     }
 
     public void ayudaClick()
     {
-        Debug.Log("Ayuda!");
+        app.modelo.Ayudas++;
     }
 
     private void Start()
@@ -60,7 +61,7 @@ public class OrdenarFigurasVista  : OrdenarFigurasElement
             {
                 style.normal.textColor = Color.white;
             }            
-            GUI.Label(new Rect(0, 0, 100, 100), "Colisiones: " + app.modelo.Cantidad_colisiones + " | Finalizado " + app.modelo.Finalizado + " | Touch " + app.modelo.Toques + "\n | Tiempo mov " + app.modelo.Duracion_toques + " | Duracion " + app.modelo.Duracion + " | Energia " + nav.modelo.Energia, style);
+            GUI.Label(new Rect(0, 0, 100, 100), " | Finalizado " + app.modelo.Finalizado + " | Touch " + app.modelo.Toques + "\n | Tiempo mov " + app.modelo.Duracion_toques + " | Duracion " + app.modelo.Duracion + " | Energia " + nav.modelo.Energia, style);
 
         }
     }    

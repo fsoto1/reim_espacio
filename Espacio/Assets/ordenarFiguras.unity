@@ -2002,7 +2002,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jugador_velocidad: 5
   velocidad_rotacion: 5
-  cantidad_asteroides: 5
 --- !u!4 &1603462914
 Transform:
   m_ObjectHideFlags: 0
@@ -2579,7 +2578,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1772647789}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: -3.38, y: -2.95, z: -0.09485966}
+  m_LocalPosition: {x: -3.38, y: -2.96, z: -0.09485966}
   m_LocalScale: {x: 0.49031302, y: 1, z: 0.2602214}
   m_Children: []
   m_Father: {fileID: 1710509728}

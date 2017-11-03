@@ -25,23 +25,27 @@ public class RecogerSuministrosControlador : RecogerSuministrosElement
                 Vector3 posicion_partida = new Vector3(11, Random.Range(-3, 6), 0);
                 Quaternion rotacion_partida = Quaternion.identity;
                 GameObject clone;
-                random = Random.Range(0, 5);
+                random = Random.Range(0, 6);
                 if (random == 0)
                 {
                     clone = Instantiate(asteroide1, posicion_partida, rotacion_partida) as GameObject;
+                    app.modelo.MeteoritosGen++;
                 }
                 else if (random == 1)
                 {
                     clone = Instantiate(asteroide2, posicion_partida, rotacion_partida) as GameObject;
+                    app.modelo.MeteoritosGen++;
                 }
                 else if (random == 2)
                 {
                     clone = Instantiate(asteroide3, posicion_partida, rotacion_partida) as GameObject;
+                    app.modelo.MeteoritosGen++;
                 }
                 else
                 {
                     clone = Instantiate(suministro, posicion_partida, rotacion_partida) as GameObject;
                     clone.GetComponent<Renderer>().sharedMaterial = materials[Random.Range(0, materials.Length)];
+                    app.modelo.SuministrosGen++;
                 }
                 clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.left * app.modelo.Velocidad_objetos);
                 clone.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * app.modelo.Velocidad_rotacion;

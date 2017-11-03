@@ -9,6 +9,7 @@ public class Usuario
     public string username;
     public string password;
     public string salt;
+    public string emailAddress;
 }
 
 [System.Serializable]
@@ -47,4 +48,32 @@ public class JsonHelper
     {
         public T[] array;
     }
+}
+
+[System.Serializable]
+public class RealizarActividad
+{
+    private int touchCantidad { get; set; }
+    private float touchTiempo { get; set; }
+    private int aciertos { get; set; }
+    private int errores { get; set; }
+    private int finalizado { get; set; }
+    private int ayudas { get; set; }
+    private int idReim = 570;
+    private int idUser { get; set; }
+    private int idSesion { get; set; }
+    private int idActividad { get; set; }
+
+    public RealizarActividad(int idActividad, int idSesion, int touchCantidad, float touchTiempo, int errores, int aciertos, int finalizado, int idUser, int ayudas) {
+        this.touchCantidad = touchCantidad;
+        this.touchTiempo = touchTiempo;
+        this.aciertos = aciertos;
+        this.errores = errores;
+        this.finalizado = finalizado;
+        this.ayudas = ayudas;
+        this.idUser = idUser;
+        this.idSesion = idSesion;
+        this.idActividad = idActividad;
+    }
+
 }

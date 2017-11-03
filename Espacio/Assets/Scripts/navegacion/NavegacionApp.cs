@@ -13,5 +13,7 @@ public class NavegacionApp : MonoBehaviour
     public NavegacionControlador controlador = new NavegacionControlador();
     public NavegacionModelo modelo = new NavegacionModelo();
     public NavegacionVista vista = new NavegacionVista();
+    public General general = new General();
+    public Login login = new Login();
 
 }

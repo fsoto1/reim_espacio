@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class Login : MonoBehaviour
+public class Login : NavegacionElement
 {
     public InputField usuarioInput;
     public InputField contraseñaInput;
@@ -14,12 +14,12 @@ public class Login : MonoBehaviour
     public GameObject usuarioPopUp;
     public Text usuarioPopUpText;
     public GameObject periodoPopUp;
-    private string baseUrl = "http://localhost:8080/reim/ws/";
     private string url;
     private string usuario;
     private string contraseña;
     public Transform padrePeriodo;
     public GameObject itemPeriodo;
+    public GameObject botonAtras;
     private int idUsuario;
     private int idColegio;
     private int idPeriodo;
@@ -44,7 +44,7 @@ public class Login : MonoBehaviour
 
     public void mensajePopUpUsuarioAtras()
     {
-        usuarioPopUp.SetActive(false);
+      usuarioPopUp.SetActive(false);
     }
 
     public void mensajePopUpUsuarioOk()
@@ -55,53 +55,68 @@ public class Login : MonoBehaviour
     }
     public void mensajePopUpPeriodoAtras()
     {
-        usuarioPopUp.SetActive(true);
-        periodoPopUp.SetActive(false);
+
+        if (botonAtras.name == "periodo")
+        {
+            usuarioPopUp.SetActive(true);
+            periodoPopUp.SetActive(false);
+        }
+        else if (botonAtras.name == "colegio")
+        {
+            StartCoroutine(buscarPeriodos());
+        }
+        else if (botonAtras.name == "curso")
+        {
+            StartCoroutine(buscarColegios());
+        }
+        else if (botonAtras.name == "alumno")
+        {
+            StartCoroutine(buscarCurso());
+        }
     }
 
     public void seleccionarPeriodo(int periodo)
     {
         Debug.Log("Periodo "+periodo);
+        
+        Debug.Log("nombre boton "+ botonAtras.name);
         idPeriodo = periodo;
         StartCoroutine(buscarColegios());
     }
 
     public void seleccionarColegio(int colegio)
     {
-        Debug.Log("Colegio " + colegio);
+        Debug.Log("nombre boton " + botonAtras.name);
         idColegio = colegio;
         StartCoroutine(buscarCurso());
     }
 
     public void seleccionarCurso(int curso)
     {
-        Debug.Log("Curso " + curso);
         idCurso = curso;
         StartCoroutine(buscarAlumno());
     }
 
     public void seleccionarAlumno(int alumno)
     {
-        Debug.Log("Alumno " + alumno);
         idAlumno = alumno;
         mensajePopUp("ALUMNO = "+idAlumno);
-        //StartCoroutine(buscarAlumno());
+        nav.general.IdAlumno = idAlumno;
+        SceneManager.LoadScene("navegacion");
     }
 
-    private void Start()
-    {
-        Debug.Log("Colegios");
-        //StartCoroutine(buscarColegios());
-        //StartCoroutine(buscarPeriodos());
-        //StartCoroutine(buscarPeriodos());
-    }
 
     /**
      *   Extrae los periodos en la base de datos
      */
     public IEnumerator buscarPeriodos() {
-        url = baseUrl + "Periodo";
-        WWW www = new WWW(url);
+        url = nav.general.BaseUrl + "Periodo";
+        Dictionary<string, string> headers = new Dictionary<string, string>();
+        WWWForm form = new WWWForm();
+        form.AddField("", 0);
+        byte[] rawData = form.data;
+        headers.Add("Authorization", nav.general.Token);
+        WWW www = new WWW(url, rawData, headers);
         yield return www;
         if (www.text != "")
         {
@@ -121,6 +136,7 @@ public class Login : MonoBehaviour
                 elemento.transform.SetParent(padrePeriodo, false);
             }
         }
+        botonAtras.name = "periodo";
     }
 
     /**
@@ -128,9 +144,10 @@ public class Login : MonoBehaviour
      */
     public IEnumerator buscarColegios()
     {
-        url = baseUrl + "Pertenece/colegio";
+        url = nav.general.BaseUrl + "Pertenece/colegio";
         Dictionary<string, string> headers = new Dictionary<string, string>();
         headers.Add("Content-Type", "application/x-www-form-urlencoded");
+        headers.Add("Authorization",  nav.general.Token);
         //Form
         WWWForm form = new WWWForm();
         form.AddField("idUsuario", idUsuario);
@@ -147,8 +164,6 @@ public class Login : MonoBehaviour
             }
             foreach (var colegio in colegios)
             {
-                Debug.Log(colegio.id);
-                Debug.Log(colegio.nombre);
                 GameObject elemento = Instantiate(itemPeriodo);
                 elemento.name = colegio.nombre;
                 elemento.GetComponentInChildren<Text>().text = colegio.nombre;
@@ -157,16 +172,18 @@ public class Login : MonoBehaviour
             }
 
         }
+        botonAtras.name = "colegio";
     }
     /**
      *   Extrae los cursos en la base de datos
-     *   indicando usuario y colegio
+     *   indicando usuario, periodo y colegio
      */
     public IEnumerator buscarCurso()
     {
-        url = baseUrl + "Pertenece/curso";
+        url = nav.general.BaseUrl + "Pertenece/curso";
         Dictionary<string, string> headers = new Dictionary<string, string>();
         headers.Add("Content-Type", "application/x-www-form-urlencoded");
+        headers.Add("Authorization", nav.general.Token);
         //Form
         WWWForm form = new WWWForm();
         form.AddField("idUsuario", idUsuario);
@@ -192,6 +209,7 @@ public class Login : MonoBehaviour
             }
 
         }
+        botonAtras.name = "curso";
     }
 
     /**
@@ -200,16 +218,16 @@ public class Login : MonoBehaviour
      */
     public IEnumerator buscarAlumno()
     {
-        url = baseUrl + "Pertenece/alumno";
+        url = nav.general.BaseUrl + "Pertenece/alumno";
         Dictionary<string, string> headers = new Dictionary<string, string>();
         headers.Add("Content-Type", "application/x-www-form-urlencoded");
+        headers.Add("Authorization", nav.general.Token);
         //Form
         WWWForm form = new WWWForm();
         form.AddField("idCurso", idCurso);
         byte[] rawData = form.data;
         WWW www = new WWW(url, rawData, headers);
         yield return www;
-        Debug.Log(www.text);
         if (www.text != "")
         {
             Usuario[] usuarios = JsonHelper.getJsonArray<Usuario>(www.text);
@@ -227,15 +245,16 @@ public class Login : MonoBehaviour
             }
 
         }
+        botonAtras.name = "alumno";
     }
 
-    public IEnumerator ir()
+    public IEnumerator autenticar()
     { 
-        if (usuario.Trim() != "" && contraseña.Trim() != "")
+        if (usuario.Trim() != "")
         {
 
             // url
-            url = baseUrl+"Usuario/login";
+            url = nav.general.BaseUrl + "Autenticacion/credencial";
             // Headers
             Dictionary<string, string> headers = new Dictionary<string, string>();
             headers.Add("Content-Type", "application/x-www-form-urlencoded");
@@ -248,111 +267,41 @@ public class Login : MonoBehaviour
 
             
             yield return www;
-            Debug.Log(www.text);
-            if (www.text != "")
+            if (www.responseHeaders.Count > 0)
             {
-                Debug.Log(www.text);
-                Usuario usuario = JsonUtility.FromJson<Usuario>(www.text);
-                idUsuario = usuario.id;
-                Debug.Log("IDUSUARIO"+ idUsuario );
-                mensajeUsuarioPopUp("Bienvenida!\n "+ usuario.nombres+" "+ usuario.apellidoPaterno);
-            }
-            else
-            {
-                mensajePopUp("Usuario no encontrado");
-            }
+                foreach (KeyValuePair<string, string> entry in www.responseHeaders)
+                {
+                    if (entry.Value.Contains( "200 OK"))
+                    {
+                        nav.general.Token = "Bearer "+ www.text;
+                        Debug.Log(nav.general.Token);
+                        url = nav.general.BaseUrl + "Autenticacion/login";
+                        headers.Add("Authorization", nav.general.Token);
+                        www = new WWW(url, rawData, headers);
+                        yield return www;
+                        Debug.Log(www.text);
+                        Usuario usuario = JsonUtility.FromJson<Usuario>(www.text);
+                        idUsuario = usuario.id;
+                        Debug.Log("IDUSUARIO" + idUsuario);
+                        mensajeUsuarioPopUp("Bienvenida!\n " + usuario.nombres + " " + usuario.apellidoPaterno);
+                    }
+                    else if (entry.Value.Contains("403 Forbidden"))
+                    {
+                        mensajePopUp("Usuario no encontrado");
+                    }
+                }
+            } 
         }
         else
         {
             mensajePopUp("Espacios en blanco");
         }
-        
-        
-        //Renderer renderer = GetComponent<Renderer>();
-        //renderer.material.mainTexture = www.texture;
-    }
-
-    IEnumerator registrar()
-    {
-        yield return new WaitForSeconds(1);
-        /*
-
-        Debug.Log(usuario + " " + contraseña);
-        if (usuario.Trim() != "" && contraseña.Trim() != "")
-        {
-            Usuarios nuevo = new Usuarios();
-            nuevo.nombreUsuarios = usuario;
-            nuevo.username = usuario;
-            nuevo.tipoUsuarios = "Test";
-            nuevo.contrasenaUsuarios = contraseña;
-            nuevo.idColegios = new Colegios { idColegios = 1};
-            
-            string json = JsonUtility.ToJson(nuevo);
-            Debug.Log("JSON "+json);
-            byte[] pData = System.Text.Encoding.ASCII.GetBytes(json.ToCharArray());
-            Dictionary<string, string> headers = new Dictionary<string, string>();
-            headers.Add("Content-Type", "application/json");
- 
-            WWW www = new WWW(url, pData, headers);
-            
-            yield return www;
-            Debug.Log("RESPUESTA " + www.text);
-            if (www.text == "")
-            {
-                mostrar("Usuario registrado correctamente!");
-            }
-            else
-            {
-                mostrar("Atención!\n No se pudo registrar correctamente");
-            }
-            //yield return new WaitForSeconds(1);
-            /*
-             * WWW www = new WWW(url, pData);
-            yield return www;
-            Debug.Log(www.text);
-            if (www.text != "")
-            {
-                Debug.Log(www.text);
-                Usuarios usuarios = JsonUtility.FromJson<Usuarios>(www.text);
-
-                Debug.Log(usuarios.idUsuarios);
-                Debug.Log(usuarios.nombreUsuarios);
-                Debug.Log(usuarios.tipoUsuarios);
-                Debug.Log(usuarios.username);
-                Debug.Log(usuarios.contrasenaUsuarios);
-                Debug.Log("COlegio " + usuarios.idColegios.nombreColegio);
-                mostrar("Bienvenido!\n Sr(a):" + usuarios.nombreUsuarios + "\n" + usuarios.tipoUsuarios + "\n" + usuarios.idColegios.nombreColegio);
-            }
-            else
-            {
-                Debug.Log("Usuario no encontrado");
-                mostrar("Usuario no encontrado");
-            }
-            ///////
-        }
-        else
-        {
-            Debug.Log("Espacios en blanco");
-            mostrar("Espacios en blanco");
-        }
-
-*/
-        //Renderer renderer = GetComponent<Renderer>();
-        //renderer.material.mainTexture = www.texture;
     }
 
     public void ingresar()
     {
         usuario = usuarioInput.text;
-        contraseña = contraseñaInput.text;
-        StartCoroutine(ir());
-    }
-
-    public void botonRegistrar()
-    {
-        usuario = usuarioInput.text;
-        contraseña = contraseñaInput.text;
-        StartCoroutine(registrar());
+        StartCoroutine(autenticar());
     }
 
     public void reim() {

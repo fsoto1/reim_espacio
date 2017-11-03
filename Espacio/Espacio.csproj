@@ -85,6 +85,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Comun\MoverFondo.cs" />
     <Compile Include="Assets\Scripts\entidades\Usuarios.cs" />
+    <Compile Include="Assets\Scripts\navegacion\General.cs" />
     <Compile Include="Assets\_Complete-Game\Scripts\Done_BGScroller.cs" />
     <Compile Include="Assets\_Complete-Game\Scripts\Done_DestroyByBoundary.cs" />
     <Compile Include="Assets\_Complete-Game\Scripts\Done_DestroyByContact.cs" />
