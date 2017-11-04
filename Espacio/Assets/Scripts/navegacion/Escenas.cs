@@ -12,21 +12,6 @@ public class Escenas : NavegacionElement
     public AudioClip entrar;
     private bool puerta = true;
 
-    /*
-    private void Update()
-    {
-        if (SceneManager.GetActiveScene().name == "esquivarMeteoritos")
-        {
-            GUIStyle style = new GUIStyle();
-            style.fontSize = 30;
-            style.normal.textColor = Color.white;
-            GUI.Label(new Rect(0, 0, 100, 100), "Colisiones: " + app.modelo.Cantidad_colisiones + " | Finalizado " + app.modelo.Finalizado +
-                " | Acelerometro " + app.modelo.Acelerometro + "\n | Duracion " + app.modelo.Duracion +
-                " | Energia " + nav.modelo.Energia, style);
-
-        }
-    }
-    */
     private void OnCollisionEnter(Collision collision)
     {
         escena = collision.gameObject.name;
@@ -49,6 +34,7 @@ public class Escenas : NavegacionElement
             {
                 nav.modelo.Energia -= 4;
             }
+            StartCoroutine(nav.general.enviarBd(nav.general.Navegacion, nav.modelo.ToquesNav, nav.modelo.DuracionToquesNav, 0, 0, 0, 0, 0, nav.modelo.AyudasNav, nav.modelo.DuracionNav));
             StartCoroutine(faded());
         }
 

@@ -264,13 +264,20 @@ public class Login : NavegacionElement
             byte[] rawData = form.data;
             // Request
             WWW www = new WWW(url, rawData, headers);
-
+            
             
             yield return www;
-            if (www.responseHeaders.Count > 0)
+            Debug.Log(www.text);
+            if (www.text == "")
             {
+                mensajePopUp("No se estableció conexión");
+            }
+            else if (www.responseHeaders.Count > 0)
+            {
+                
                 foreach (KeyValuePair<string, string> entry in www.responseHeaders)
                 {
+                    Debug.Log(entry.Value);
                     if (entry.Value.Contains( "200 OK"))
                     {
                         nav.general.Token = "Bearer "+ www.text;
@@ -283,11 +290,16 @@ public class Login : NavegacionElement
                         Usuario usuario = JsonUtility.FromJson<Usuario>(www.text);
                         idUsuario = usuario.id;
                         Debug.Log("IDUSUARIO" + idUsuario);
-                        mensajeUsuarioPopUp("Bienvenida!\n " + usuario.nombres + " " + usuario.apellidoPaterno);
+                        mensajeUsuarioPopUp("Bienvenida(o)!\n " + usuario.nombres + " " + usuario.apellidoPaterno);
+                        break;
                     }
                     else if (entry.Value.Contains("403 Forbidden"))
                     {
                         mensajePopUp("Usuario no encontrado");
+                    }
+                    else if (entry.Value.Contains("404 Not Found"))
+                    {
+                        mensajePopUp("No se encontró el acceso");
                     }
                 }
             } 

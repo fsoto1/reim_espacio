@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class General : NavegacionElement
 {
-    
+
     private string baseUrl = "http://localhost:8080/reim/ws/";
     private string token;
     private int idReim = 570;
@@ -57,6 +57,7 @@ public class General : NavegacionElement
         else
         {
             Debug.Log("0");
+            Debug.Log(www.text);
         }
 
     }

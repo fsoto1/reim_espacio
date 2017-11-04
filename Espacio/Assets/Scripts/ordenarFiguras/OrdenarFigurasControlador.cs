@@ -36,6 +36,7 @@ public class OrdenarFigurasControlador : OrdenarFigurasElement
     public AudioClip energiaClip;
 
     float minDistance = 0.7f;
+    private int varSalir;
 
     private void toques()
     {
@@ -55,6 +56,7 @@ public class OrdenarFigurasControlador : OrdenarFigurasElement
         app.modelo.Duracion_toques = 0f;
         app.modelo.Toques = 0;
         app.modelo.Ayudas = 0;
+        app.modelo.Aciertos = 0;
         app.modelo.Finalizado = false;
     }
 
@@ -86,16 +88,16 @@ public class OrdenarFigurasControlador : OrdenarFigurasElement
     {
         nPizarra = Random.Range(1, pizarra.Length);
         planePizarra.GetComponent<Renderer>().sharedMaterial = pizarra[nPizarra];
-        app.modelo.AciertosGen = 3;
+        app.modelo.AciertosGen = 5;
         if (nPizarra <= 6)
         {
             planeta4.transform.position = new Vector3(-5f, -5f, 0);
-            app.modelo.AciertosGen++;
+            app.modelo.AciertosGen--;
         }
         if (nPizarra <= 12)
         {
             planeta5.transform.position = new Vector3(-5f, -5f, 0);
-            app.modelo.AciertosGen++;
+            app.modelo.AciertosGen--;
         }
     }
 
@@ -276,351 +278,359 @@ public class OrdenarFigurasControlador : OrdenarFigurasElement
         }
     }
 
-    public void salir() {
-        app.modelo.Finalizado = false;
-        app.modelo.Aciertos = 0;
-        if (nPizarra == 1 && ep1 && ep5 && ep9)
+    public void salirActividad() {
+        if (varSalir == 0)
         {
+            salir();
+            varSalir++;
+        }
+    }
+
+    public void salir() {
+        if (nPizarra == 1)
+        {
+            Debug.Log("Pizarra 1");
             if (ep1)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep5)
+            if (ep5)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep9)
+            if (ep9)
             {
                 app.modelo.Aciertos++;
             }
         }
-        else if (nPizarra == 2 && ep2 && ep5 && ep8)
+        else if (nPizarra == 2)
         {
             if (ep2)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep5)
+            if (ep5)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep8)
+            if (ep8)
             {
                 app.modelo.Aciertos++;
             }
         }
-        else if (nPizarra == 3 && ep3 && ep5 && ep7)
+        else if (nPizarra == 3 )
         {
             if (ep3)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep5)
+            if (ep5)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep7)
+            if (ep7)
             {
                 app.modelo.Aciertos++;
             }
         }
-        else if (nPizarra == 4 && ep5 && ep7 && ep8)
+        else if (nPizarra == 4 )
         {
             if (ep5)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep7)
+            if (ep7)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep8)
+            if (ep8)
             {
                 app.modelo.Aciertos++;
             }
         }
-        else if (nPizarra == 5 && ep4 && ep5 && ep6)
+        else if (nPizarra == 5 )
         {
             if (ep4)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep5)
+            if (ep5)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep6)
+            if (ep6)
             {
                 app.modelo.Aciertos++;
             }
         }
-        else if (nPizarra == 6 && ep3 && ep7 && ep9)
+        else if (nPizarra == 6 )
         {
             if (ep3)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep7)
+            if (ep7)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep9)
+            if (ep9)
             {
                 app.modelo.Aciertos++;
             }
         }
-        else if (nPizarra == 7 && ep1 && ep2 && ep6 && ep8)
+        else if (nPizarra == 7 )
         {
             if (ep1)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep2)
+            if (ep2)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep6)
+            if (ep6)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep8)
+            if (ep8)
             {
                 app.modelo.Aciertos++;
             }
         }
-        else if (nPizarra == 8 && ep2 && ep4 && ep6 && ep8)
+        else if (nPizarra == 8 )
         {
             if (ep2)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep4)
+            if (ep4)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep6)
+            if (ep6)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep8)
+            if (ep8)
             {
                 app.modelo.Aciertos++;
             }
         }
-        else if (nPizarra == 9 && ep1 && ep3 && ep7 && ep9)
+        else if (nPizarra == 9 )
         {
             if (ep1)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep3)
+            if (ep3)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep7)
+            if (ep7)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep9)
+            if (ep9)
             {
                 app.modelo.Aciertos++;
             }
         }
-        else if (nPizarra == 10 && ep2 && ep3 && ep5 && ep6)
+        else if (nPizarra == 10 )
         {
             if (ep2)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep3)
+            if (ep3)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep5)
+            if (ep5)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep6)
+            if (ep6)
             {
                 app.modelo.Aciertos++;
             }
         }
-        else if (nPizarra == 11 && ep2 && ep4 && ep5 && ep8)
+        else if (nPizarra == 11 )
         {
             if (ep2)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep4)
+            if (ep4)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep5)
+            if (ep5)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep8)
+            if (ep8)
             {
                 app.modelo.Aciertos++;
             }
         }
-        else if (nPizarra == 12 && ep2 && ep7 && ep8 && ep9)
+        else if (nPizarra == 12 )
         {
             if (ep2)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep7)
+            if (ep7)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep8)
+            if (ep8)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep9)
+            if (ep9)
             {
                 app.modelo.Aciertos++;
             }
         }
-        else if (nPizarra == 13 && ep1 && ep2 && ep3 && ep7 && ep9)
+        else if (nPizarra == 13 )
         {
             if (ep1)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep2)
+            if (ep2)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep3)
+            if (ep3)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep7)
+            if (ep7)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep9)
+            if (ep9)
             {
                 app.modelo.Aciertos++;
             }
         }
-        else if (nPizarra == 14 && ep4 && ep5 && ep6 && ep7 && ep9)
+        else if (nPizarra == 14 )
         {
             if (ep4)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep5)
+            if (ep5)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep6)
+            if (ep6)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep7)
+            if (ep7)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep9)
+            if (ep9)
             {
                 app.modelo.Aciertos++;
             }
         }
-        else if (nPizarra == 15 && ep1 && ep3 && ep4 && ep5 && ep8)
+        else if (nPizarra == 15)
         {
             if (ep1)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep3)
+            if (ep3)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep4)
+            if (ep4)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep5)
+            if (ep5)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep8)
+            if (ep8)
             {
                 app.modelo.Aciertos++;
             }
         }
-        else if (nPizarra == 16 && ep3 && ep6 && ep7 && ep8 && ep9)
+        else if (nPizarra == 16 )
         {
             if (ep3)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep6)
+            if (ep6)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep7)
+            if (ep7)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep8)
+            if (ep8)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep9)
+            if (ep9)
             {
                 app.modelo.Aciertos++;
             }
         }
-        else if (nPizarra == 17 && ep3 && ep4 && ep5 && ep6 && ep7)
+        else if (nPizarra == 17 )
         {
             if (ep3)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep4)
+            if (ep4)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep5)
+            if (ep5)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep6)
+            if (ep6)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep7)
+            if (ep7)
             {
                 app.modelo.Aciertos++;
             }
         }
-        else if (nPizarra == 18 && ep1 && ep3 && ep5 && ep7 && ep9)
+        else if (nPizarra == 18)
         {
             if (ep1)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep3)
+            if (ep3)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep5)
+            if (ep5)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep7)
+            if (ep7)
             {
                 app.modelo.Aciertos++;
             }
-            else if (ep9)
+            if (ep9)
             {
                 app.modelo.Aciertos++;
             }
         }
+        StartCoroutine(nav.general.enviarBd(nav.general.OrdenarFiguras, app.modelo.Toques, app.modelo.Duracion_toques, 0, 0, app.modelo.Aciertos, app.modelo.AciertosGen, 0, app.modelo.Ayudas, app.modelo.Duracion));
     }
 
     private bool cerca(Vector3 p, Vector3 plan1, Vector3 plan2, Vector3 plan3, Vector3 plan4, Vector3 plan5)
@@ -650,9 +660,17 @@ public class OrdenarFigurasControlador : OrdenarFigurasElement
 
     private void Update()
     {
+        Debug.Log(nPizarra);
         toques();
-        posiciones();
-        comparar();
+        if (!app.modelo.Finalizado)
+        {
+            posiciones();
+            comparar();
+        }
+        if (app.modelo.BotonSalir)
+        {
+            salirActividad();
+        }
         if (app.modelo.Finalizado && !app.modelo.Recompensa)
         {
             app.modelo.Recompensa = true;

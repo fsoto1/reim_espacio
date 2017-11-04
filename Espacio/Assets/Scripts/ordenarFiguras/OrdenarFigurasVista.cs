@@ -22,8 +22,7 @@ public class OrdenarFigurasVista  : OrdenarFigurasElement
 
     public void volverClick()
     {
-        app.controlador.salir();
-        StartCoroutine(nav.general.enviarBd(nav.general.OrdenarFiguras, app.modelo.Toques, app.modelo.Duracion_toques, 0, 0, app.modelo.Aciertos, app.modelo.AciertosGen, 0, app.modelo.Ayudas, app.modelo.Duracion));
+        app.modelo.BotonSalir = true;
         StartCoroutine(faded());
     }
 

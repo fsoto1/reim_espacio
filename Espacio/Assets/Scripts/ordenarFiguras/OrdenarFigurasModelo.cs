@@ -15,6 +15,7 @@ public class OrdenarFigurasModelo : OrdenarFigurasElement
     private int ayudas;
     private int aciertos;
     private int aciertosGen;
+    private bool botonSalir;
 
     public float Jugador_velocidad
     {
@@ -143,6 +144,19 @@ public class OrdenarFigurasModelo : OrdenarFigurasElement
         set
         {
             aciertosGen = value;
+        }
+    }
+
+    public bool BotonSalir
+    {
+        get
+        {
+            return botonSalir;
+        }
+
+        set
+        {
+            botonSalir = value;
         }
     }
 }

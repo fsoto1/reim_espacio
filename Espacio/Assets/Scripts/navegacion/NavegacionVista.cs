@@ -12,13 +12,13 @@ public class NavegacionVista : NavegacionElement
 
     public void volverClick()
     {
-        Debug.Log("Volver!");
+        StartCoroutine(nav.general.enviarBd(nav.general.Navegacion, nav.modelo.ToquesNav, nav.modelo.DuracionToquesNav, 0, 0, 0, 0, 1, nav.modelo.AyudasNav, nav.modelo.DuracionNav));
         SceneManager.LoadScene("login");
     }
 
     public void ayudaClick()
     {
-        Debug.Log("Ayuda!");
+        nav.modelo.AyudasNav++;
     }
 
     private void Start()
@@ -42,8 +42,9 @@ public class NavegacionVista : NavegacionElement
         {
             GUIStyle style = new GUIStyle();
             style.fontSize = 30;
-            style.normal.textColor = Color.white;
-            GUI.Label(new Rect(0, 0, 100, 100), "ALUMNO: "+ nav.general.IdAlumno, style);
+            style.normal.textColor = Color.green;
+            GUI.Label(new Rect(0, 0, 100, 100), " | Touch " + nav.modelo.ToquesNav + " Tiempo mov " + nav.modelo.DuracionToquesNav +
+                " | Duracion " + nav.modelo.DuracionNav + " | Energia " + nav.modelo.Energia+ " \n ALUMNO: " + nav.general.IdAlumno + " | Ayudas " + nav.modelo.AyudasNav, style);
 
         }
     }

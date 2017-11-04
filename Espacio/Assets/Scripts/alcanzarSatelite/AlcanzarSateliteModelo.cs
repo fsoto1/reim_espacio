@@ -18,6 +18,7 @@ public class AlcanzarSateliteModelo : AlcanzarSateliteElement
     private float minY = -3f;
     private float maxY = 4f;
     private int ayudas;
+    private int asteroidesGen;
 
     public float Jugador_velocidad
     {
@@ -185,6 +186,19 @@ public class AlcanzarSateliteModelo : AlcanzarSateliteElement
         set
         {
             ayudas = value;
+        }
+    }
+
+    public int AsteroidesGen
+    {
+        get
+        {
+            return asteroidesGen;
+        }
+
+        set
+        {
+            asteroidesGen = value;
         }
     }
 }

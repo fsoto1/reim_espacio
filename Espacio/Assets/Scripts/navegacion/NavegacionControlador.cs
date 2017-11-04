@@ -26,19 +26,19 @@ public class NavegacionControlador : NavegacionElement
 
     public void moverJugador()
     {
+        nav.modelo.DuracionNav = Time.timeSinceLevelLoad;
         if (Input.touchCount == 1)
         {
-           // Debug.Log("Posicion X "+Input.GetTouch(0).position.x+ "  Y "+ Input.GetTouch(0).position.y);
+            nav.modelo.DuracionToquesNav += Time.deltaTime;
             coordenadas = new Vector3(Input.GetTouch(0).position.x, Input.GetTouch(0).position.y, 5.0f);
             posicion = Camera.main.ScreenToWorldPoint(coordenadas);
             jugador.transform.LookAt(posicion);
             jugador.transform.Rotate(new Vector3(0.0f, 0.0f, -90.0f));
-            
             jugador.transform.position = Vector3.Lerp(jugador.transform.position, posicion, velocidad * Time.deltaTime);
-            //jugador.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            //jugador.transform.position= new Vector3(jugador.transform.position.x, jugador.transform.position, -90);
-            //Vector3.
-
+            if (Input.GetTouch(0).phase == TouchPhase.Began)
+            {
+                nav.modelo.ToquesNav++;
+            }
         }
         
     }
@@ -62,10 +62,16 @@ public class NavegacionControlador : NavegacionElement
     {
         jugador.GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
-
+    private void reiniciarValores()
+    {
+        nav.modelo.DuracionNav = 0f;
+        nav.modelo.ToquesNav = 0;
+        nav.modelo.DuracionToquesNav = 0;
+        nav.modelo.AyudasNav = 0;
+}
     private void Start()
     {
-        // currentCameraIndex = 0;
+        reiniciarValores();
         jugador = GameObject.Find("Player");
         limite1 = GameObject.Find("Limite1");
         limite1Visual = GameObject.Find("Limite1Visual");

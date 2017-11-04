@@ -43,7 +43,7 @@ public class JugadorControlador : AlcanzarSateliteElement
         if (collision.gameObject.name == "Satelite")
         {
             reproduceAudio(1);
-            StartCoroutine(nav.general.enviarBd(nav.general.AlcanzarSatelite, app.modelo.Toques, app.modelo.Duracion_toques, app.modelo.Cantidad_colisiones, app.modelo.Cantidad_colisiones, 1, 1, 1, app.modelo.Ayudas, app.modelo.Duracion));
+            StartCoroutine(nav.general.enviarBd(nav.general.AlcanzarSatelite, app.modelo.Toques, app.modelo.Duracion_toques, app.modelo.Cantidad_colisiones, app.modelo.AsteroidesGen, 1, 1, 1, app.modelo.Ayudas, app.modelo.Duracion));
             app.modelo.Finalizado = true;
             nav.modelo.Energia++;
             Destroy(collision.gameObject);            

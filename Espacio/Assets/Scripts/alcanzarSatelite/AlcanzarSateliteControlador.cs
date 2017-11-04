@@ -62,8 +62,9 @@ public class AlcanzarSateliteControlador : AlcanzarSateliteElement
 
     private void Start()
     {
-        random = Random.Range(cantidadMin, cantidadMax);
-        for (int i = 0; i < random; i++)
+        app.modelo.AsteroidesGen = Random.Range(cantidadMin, cantidadMax);
+
+        for (int i = 0; i < app.modelo.AsteroidesGen; i++)
         {
             Invoke("generar", 0);
         }
