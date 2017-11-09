@@ -37,8 +37,10 @@ public class AlcanzarSateliteVista  : AlcanzarSateliteElement
 
     public void volverClick()
     {
-       StartCoroutine(nav.general.enviarBd(nav.general.AlcanzarSatelite, app.modelo.Toques, app.modelo.Duracion_toques, app.modelo.Cantidad_colisiones, app.modelo.AsteroidesGen, 0, 1, 0, app.modelo.Ayudas, app.modelo.Duracion));
-       StartCoroutine(faded());
+        StartCoroutine(nav.general.enviarBd(nav.general.AlcanzarSatelite, app.modelo.Toques, app.modelo.Duracion_toques, app.modelo.Cantidad_colisiones, app.modelo.AsteroidesGen, 0, 1, 0, app.modelo.Ayudas, app.modelo.Duracion));
+        nav.modelo.JugadorPosX = -17f;
+        nav.modelo.JugadorPosY = 6f;
+        StartCoroutine(faded());
     }
 
     public void ayudaClick()

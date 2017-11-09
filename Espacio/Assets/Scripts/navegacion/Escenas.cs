@@ -20,21 +20,25 @@ public class Escenas : NavegacionElement
             puerta = false;
             if (escena == "recogerSuministros")
             {
-                nav.modelo.Energia -= 1;
+                // nav.modelo.Energia -= 1;
+                StartCoroutine(nav.general.enviarBd(nav.general.Navegacion, nav.modelo.ToquesNav, nav.modelo.DuracionToquesNav, 0, 0, 0, 0, 0, nav.modelo.AyudasNav, nav.modelo.DuracionNav));
             }
             else if (escena == "recolectarObjetos")
             {
-                nav.modelo.Energia -= 2;
+                //nav.modelo.Energia -= 2;
+                StartCoroutine(nav.general.enviarBd(nav.general.Navegacion, nav.modelo.ToquesNav, nav.modelo.DuracionToquesNav, 0, 0, 0, 0, 0, nav.modelo.AyudasNav, nav.modelo.DuracionNav));
             }
             else if (escena == "ordenarFiguras")
             {
-                nav.modelo.Energia -= 3;
+                //nav.modelo.Energia -= 3;
+                StartCoroutine(nav.general.enviarBdId(nav.general.Navegacion, nav.modelo.ToquesNav, nav.modelo.DuracionToquesNav, 0, 0, 0, 0, 0, nav.modelo.AyudasNav, nav.modelo.DuracionNav));
             }
             else if (escena == "esquivarMeteoritos")
             {
-                nav.modelo.Energia -= 4;
+                //nav.modelo.Energia -= 4;
+                StartCoroutine(nav.general.enviarBd(nav.general.Navegacion, nav.modelo.ToquesNav, nav.modelo.DuracionToquesNav, 0, 0, 0, 0, 0, nav.modelo.AyudasNav, nav.modelo.DuracionNav));
             }
-            StartCoroutine(nav.general.enviarBd(nav.general.Navegacion, nav.modelo.ToquesNav, nav.modelo.DuracionToquesNav, 0, 0, 0, 0, 0, nav.modelo.AyudasNav, nav.modelo.DuracionNav));
+            
             StartCoroutine(faded());
         }
 

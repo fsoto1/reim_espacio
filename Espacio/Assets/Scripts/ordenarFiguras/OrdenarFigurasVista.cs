@@ -22,7 +22,10 @@ public class OrdenarFigurasVista  : OrdenarFigurasElement
 
     public void volverClick()
     {
+        //StartCoroutine(nav.general.enviarBd(nav.general.OrdenarFiguras, app.modelo.Toques, app.modelo.Duracion_toques, 0, 0, app.modelo.Aciertos, app.modelo.AciertosGen, 1, app.modelo.Ayudas, app.modelo.Duracion));
         app.modelo.BotonSalir = true;
+        nav.modelo.JugadorPosX = 5f;
+        nav.modelo.JugadorPosY = -6f;
         StartCoroutine(faded());
     }
 
@@ -61,6 +64,19 @@ public class OrdenarFigurasVista  : OrdenarFigurasElement
                 style.normal.textColor = Color.white;
             }            
             GUI.Label(new Rect(0, 0, 100, 100), " | Finalizado " + app.modelo.Finalizado + " | Touch " + app.modelo.Toques + "\n | Tiempo mov " + app.modelo.Duracion_toques + " | Duracion " + app.modelo.Duracion + " | Energia " + nav.modelo.Energia, style);
+
+            GUI.Label(new Rect(0, 200, 100, 100), " | P1 " + app.modelo.Posicion1 +
+                                                  " | P2 " + app.modelo.Posicion2 +
+                                                  " | P3 " + app.modelo.Posicion3 +
+                                                  "\n | P4 " + app.modelo.Posicion4 +
+                                                  " | P5 " + app.modelo.Posicion5 +
+                                                  " | P6 " + app.modelo.Posicion6 +
+                                                  "\n | P7 " + app.modelo.Posicion7 +
+                                                  " | P8 " + app.modelo.Posicion8 +
+                                                  " | P9 " + app.modelo.Posicion9 
+
+
+                , style);
 
         }
     }    

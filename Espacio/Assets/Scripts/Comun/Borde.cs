@@ -5,10 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class Borde : MonoBehaviour
 {
+ 
 
-
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
-        
+        if (other.gameObject.name == "Player")
+        {
+            SceneManager.LoadScene("navegacion");
+        }
     }
 }

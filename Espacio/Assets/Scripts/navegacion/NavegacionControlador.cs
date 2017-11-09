@@ -7,9 +7,8 @@ public class NavegacionControlador : NavegacionElement
 {
     private Vector3 coordenadas;
     private Vector3 posicion;
-    private float velocidad = 2.0f;
+    private float velocidad = 1.5f;
     private GameObject jugador;
-    //private GameObject alcanzarSatelite;
     private Vector3 offset;
     public Camera camara;
     private GameObject limite1;
@@ -61,6 +60,7 @@ public class NavegacionControlador : NavegacionElement
     private void Update()
     {
         jugador.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
     }
     private void reiniciarValores()
     {
@@ -68,7 +68,9 @@ public class NavegacionControlador : NavegacionElement
         nav.modelo.ToquesNav = 0;
         nav.modelo.DuracionToquesNav = 0;
         nav.modelo.AyudasNav = 0;
-}
+    }
+
+
     private void Start()
     {
         reiniciarValores();
@@ -94,8 +96,9 @@ public class NavegacionControlador : NavegacionElement
             Destroy(limite2);
             Destroy(limite2Visual);
         }
-        jugador.transform.position = new Vector3(-20f, 0.0f, 0.0f);
-        camara.transform.position = new Vector3(-20f, 0.0f, -5.0f);
+        //jugador.transform.position = new Vector3(-20f, 0.0f, 0.0f);
+        jugador.transform.position = new Vector3(nav.modelo.JugadorPosX, nav.modelo.JugadorPosY, 0.0f);
+        camara.transform.position = new Vector3(nav.modelo.JugadorPosX, nav.modelo.JugadorPosY, -5.0f);
         offset = camara.transform.position - jugador.transform.position;
     }
 }

@@ -64,6 +64,19 @@ public class RealizarActividad
     private int idSesion { get; set; }
     private int idActividad { get; set; }
 
+    public int IdReim
+    {
+        get
+        {
+            return idReim;
+        }
+
+        set
+        {
+            idReim = value;
+        }
+    }
+
     public RealizarActividad(int idActividad, int idSesion, int touchCantidad, float touchTiempo, int errores, int aciertos, int finalizado, int idUser, int ayudas) {
         this.touchCantidad = touchCantidad;
         this.touchTiempo = touchTiempo;
@@ -76,4 +89,11 @@ public class RealizarActividad
         this.idActividad = idActividad;
     }
 
+}
+
+[System.Serializable]
+public class Sesion
+{
+    public int idSesion;
+    public int userId;
 }

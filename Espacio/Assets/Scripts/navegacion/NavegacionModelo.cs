@@ -6,7 +6,7 @@ using UnityEngine;
 public class NavegacionModelo : NavegacionElement
 {
 
-    private float energia = 30;
+    private float energia = 0;
     private float maxEnergia = 15f;
     private float velocidad_background = 0.25f;
     private float velocidadRotacion = 20f;
@@ -14,6 +14,10 @@ public class NavegacionModelo : NavegacionElement
     private int toquesNav;
     private float duracionToquesNav;
     private int ayudasNav;
+    private float jugadorPosX = -20f;
+    private float jugadorPosY = 0f;
+
+
 
     public float Energia
     {
@@ -116,6 +120,32 @@ public class NavegacionModelo : NavegacionElement
         set
         {
             ayudasNav = value;
+        }
+    }
+
+    public float JugadorPosX
+    {
+        get
+        {
+            return jugadorPosX;
+        }
+
+        set
+        {
+            jugadorPosX = value;
+        }
+    }
+
+    public float JugadorPosY
+    {
+        get
+        {
+            return jugadorPosY;
+        }
+
+        set
+        {
+            jugadorPosY = value;
         }
     }
 }

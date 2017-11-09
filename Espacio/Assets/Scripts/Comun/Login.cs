@@ -73,6 +73,10 @@ public class Login : NavegacionElement
         {
             StartCoroutine(buscarCurso());
         }
+        else if (botonAtras.name == "iniciar")
+        {
+            StartCoroutine(buscarAlumno());
+        }
     }
 
     public void seleccionarPeriodo(int periodo)
@@ -99,16 +103,57 @@ public class Login : NavegacionElement
 
     public void seleccionarAlumno(int alumno)
     {
+        Debug.Log("nombre boton " + botonAtras.name);
         idAlumno = alumno;
         mensajePopUp("ALUMNO = "+idAlumno);
         nav.general.IdAlumno = idAlumno;
+        StartCoroutine(nuevaSesion());
+        iniciarJuego();
+
+       // SceneManager.LoadScene("navegacion");
+    }
+
+    public void irNavegacion()
+    {
         SceneManager.LoadScene("navegacion");
+    }
+
+    public IEnumerator nuevaSesion()
+    {
+        url = nav.general.BaseUrl + "Sesion";
+        Dictionary<string, string> headers = new Dictionary<string, string>();
+        WWWForm form = new WWWForm();
+        form.AddField("idUser", idAlumno);
+        byte[] rawData = form.data;
+        headers.Add("Authorization", nav.general.Token);
+        WWW www = new WWW(url, rawData, headers);
+        yield return www;
+        Debug.Log(www.text);
+        Sesion sesion = JsonUtility.FromJson<Sesion>(www.text);
+        nav.general.IdSesion = sesion.idSesion;
+    }
+
+    public void iniciarJuego()
+    {
+       
+        foreach (Transform child in padrePeriodo)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+
+        GameObject elemento = Instantiate(itemPeriodo);
+        elemento.name = "iniciar";
+        elemento.GetComponentInChildren<Text>().text = "Iniciar";
+        elemento.GetComponent<Button>().onClick.AddListener(() => irNavegacion());
+        elemento.transform.SetParent(padrePeriodo, false);
+   
+        botonAtras.name = "iniciar";
     }
 
 
     /**
-     *   Extrae los periodos en la base de datos
-     */
+        *   Extrae los periodos en la base de datos
+    */
     public IEnumerator buscarPeriodos() {
         url = nav.general.BaseUrl + "Periodo";
         Dictionary<string, string> headers = new Dictionary<string, string>();
@@ -277,7 +322,6 @@ public class Login : NavegacionElement
                 
                 foreach (KeyValuePair<string, string> entry in www.responseHeaders)
                 {
-                    Debug.Log(entry.Value);
                     if (entry.Value.Contains( "200 OK"))
                     {
                         nav.general.Token = "Bearer "+ www.text;

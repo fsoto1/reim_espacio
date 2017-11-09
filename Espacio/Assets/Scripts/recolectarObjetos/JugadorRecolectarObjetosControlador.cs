@@ -48,6 +48,11 @@ public class JugadorRecolectarObjetosControlador : RecolectarObjetosElement
         if (!encontrado)
         {
             app.modelo.Cantidad_colisiones++;
+            Vector3 dir = collision.contacts[0].point - transform.position;
+            dir = -dir.normalized;
+            GetComponent<Rigidbody>().AddForce(dir * 50f);
+            GetComponent<AudioSource>().clip = choqueClip;
+            GetComponent<AudioSource>().Play();
             GetComponent<AudioSource>().clip = choqueClip;
             GetComponent<AudioSource>().Play();
         }

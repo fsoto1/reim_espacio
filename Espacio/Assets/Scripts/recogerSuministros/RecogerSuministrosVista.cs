@@ -23,6 +23,8 @@ public class RecogerSuministrosVista : RecogerSuministrosElement
     public void volverClick()
     {
         StartCoroutine(nav.general.enviarBd(nav.general.RecogerSuministros , app.modelo.Toques, app.modelo.Duracion_toques, app.modelo.Cantidad_colisiones, app.modelo.MeteoritosGen, app.modelo.Cantidad_suministros, app.modelo.SuministrosGen, 1, app.modelo.Ayudas, app.modelo.Duracion));
+        nav.modelo.JugadorPosX = -17f;
+        nav.modelo.JugadorPosY = -6f;
         StartCoroutine(faded());
     }
 

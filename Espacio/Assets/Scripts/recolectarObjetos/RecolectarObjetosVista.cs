@@ -23,6 +23,8 @@ public class RecolectarObjetosVista : RecolectarObjetosElement
     public void volverClick()
     {
         StartCoroutine(nav.general.enviarBd(nav.general.RecolectarObjectos, app.modelo.Toques, app.modelo.Duracion_toques, app.modelo.Cantidad_colisiones, app.modelo.ErroresGen,app.modelo.Recolectados, app.modelo.AciertosGen, 1, app.modelo.Ayudas, app.modelo.Duracion));
+        nav.modelo.JugadorPosX = 5f;
+        nav.modelo.JugadorPosY = 6f;
         StartCoroutine(faded());
     }
 

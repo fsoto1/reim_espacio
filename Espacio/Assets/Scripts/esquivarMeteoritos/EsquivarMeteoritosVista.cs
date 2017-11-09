@@ -22,6 +22,8 @@ public class EsquivarMeteoritosVista : EsquivarMeteoritosElement
     public void volverClick()
     {
         StartCoroutine(nav.general.enviarBd(nav.general.EsquivarMeteoritos, 0, 0f, app.modelo.Cantidad_colisiones, app.modelo.MeteoritosGen, 0, 0, 1, app.modelo.Ayudas, app.modelo.Duracion));
+        nav.modelo.JugadorPosX = 23f;
+        nav.modelo.JugadorPosY = 3f;
         StartCoroutine(faded());
     }
 

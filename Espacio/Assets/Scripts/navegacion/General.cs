@@ -6,9 +6,8 @@ using UnityEngine.UI;
 
 public class General : NavegacionElement
 {
-
+    
     private string baseUrl = "http://localhost:8080/reim/ws/";
-    private string token;
     private int idReim = 570;
     private int idAlumno = 25387;
     private int navegacion = 167;
@@ -18,22 +17,66 @@ public class General : NavegacionElement
     private int ordenarFiguras = 171;
     private int esquivarMeteoritos = 172;
     private int idSesion = 1;
+    private int idActividadActual;
 
     public IEnumerator enviarBd(int actividad, int toques, float duracion_toques, int errores, int erroresGen, int aciertos, int aciertosGen, int finalizado, int ayudas, float duracion)
     {
 
         // url
-        string url = nav.general.BaseUrl + "Actividad/ingresar";
+        string url = baseUrl + "Actividad/ingresar";
         // Headers
         Dictionary<string, string> headers = new Dictionary<string, string>();
         headers.Add("Authorization", nav.general.Token);
         headers.Add("Content-Type", "application/x-www-form-urlencoded");
         //Form
         WWWForm form = new WWWForm();
-        form.AddField("idUser", nav.general.IdAlumno);
+        form.AddField("idUser", idAlumno);
         form.AddField("idActividad", actividad);
-        form.AddField("idSesion", nav.general.IdSesion);
-        form.AddField("idReim", nav.general.IdReim);
+        form.AddField("idSesion", idSesion);
+        form.AddField("idReim", idReim);
+        form.AddField("touchCantidad", toques);
+        form.AddField("touchTiempo", duracion_toques.ToString());
+        form.AddField("errores", errores);
+        form.AddField("erroresGen", erroresGen);
+        form.AddField("aciertos", aciertos);
+        form.AddField("aciertosGen", aciertosGen);
+        form.AddField("finalizado", finalizado);
+        form.AddField("ayudas", ayudas);
+        form.AddField("duracion", duracion.ToString());
+        byte[] rawData = form.data;
+        // Request
+        WWW www = new WWW(url, rawData, headers);
+
+
+        yield return www;
+        //Debug.Log(www.text);
+        if (www.text == "ingresado")
+        {
+            Debug.Log("1");
+        }
+        else
+        {
+            Debug.Log("0");
+            Debug.Log(www.text);
+        }
+
+    }
+
+    public IEnumerator enviarBdId(int actividad, int toques, float duracion_toques, int errores, int erroresGen, int aciertos, int aciertosGen, int finalizado, int ayudas, float duracion)
+    {
+
+        // url
+        string url = baseUrl + "Actividad/ingresar/id";
+        // Headers
+        Dictionary<string, string> headers = new Dictionary<string, string>();
+        headers.Add("Authorization", nav.general.Token);
+        headers.Add("Content-Type", "application/x-www-form-urlencoded");
+        //Form
+        WWWForm form = new WWWForm();
+        form.AddField("idUser", idAlumno);
+        form.AddField("idActividad", actividad);
+        form.AddField("idSesion", idSesion);
+        form.AddField("idReim", idReim);
         form.AddField("touchCantidad", toques);
         form.AddField("touchTiempo", duracion_toques.ToString());
         form.AddField("errores", errores);
@@ -50,6 +93,7 @@ public class General : NavegacionElement
 
         yield return www;
         Debug.Log(www.text);
+        idActividadActual = int.Parse(www.text);
         if (www.text == "ingresado")
         {
             Debug.Log("1");
@@ -202,6 +246,19 @@ public class General : NavegacionElement
         set
         {
             token = value;
+        }
+    }
+
+    public int IdActividadActual
+    {
+        get
+        {
+            return idActividadActual;
+        }
+
+        set
+        {
+            idActividadActual = value;
         }
     }
 }

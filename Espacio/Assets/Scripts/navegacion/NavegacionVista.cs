@@ -44,7 +44,7 @@ public class NavegacionVista : NavegacionElement
             style.fontSize = 30;
             style.normal.textColor = Color.green;
             GUI.Label(new Rect(0, 0, 100, 100), " | Touch " + nav.modelo.ToquesNav + " Tiempo mov " + nav.modelo.DuracionToquesNav +
-                " | Duracion " + nav.modelo.DuracionNav + " | Energia " + nav.modelo.Energia+ " \n ALUMNO: " + nav.general.IdAlumno + " | Ayudas " + nav.modelo.AyudasNav, style);
+                " | Duracion " + nav.modelo.DuracionNav + " | Energia " + nav.modelo.Energia+ " \n Alumno : " + nav.general.IdAlumno + " Sesion : " + nav.general.IdSesion  +" | Ayudas " + nav.modelo.AyudasNav, style);
 
         }
     }

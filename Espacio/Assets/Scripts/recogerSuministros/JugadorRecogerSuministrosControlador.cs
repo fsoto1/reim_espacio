@@ -19,13 +19,14 @@ public class JugadorRecogerSuministrosControlador : RecogerSuministrosElement
             posicion = Camera.main.ScreenToWorldPoint(coordenadas);
             transform.position = Vector3.Lerp(transform.position, posicion, app.modelo.Velocidad_jugador * Time.deltaTime);
             app.modelo.Duracion_toques += Time.deltaTime;
-                
-     
+
             if (Input.GetTouch(0).phase == TouchPhase.Began)
             {
                 app.modelo.Toques++;
             }
+
         }
+        
     }
 
     private void Start()
@@ -54,6 +55,9 @@ public class JugadorRecogerSuministrosControlador : RecogerSuministrosElement
         else
         {
             app.modelo.Cantidad_colisiones++;
+            Vector3 dir = collision.contacts[0].point - transform.position;
+            dir = -dir.normalized;
+            GetComponent<Rigidbody>().AddForce(dir * 50f);
             GetComponent<AudioSource>().clip = choqueClip;
             GetComponent<AudioSource>().Play();
         }
