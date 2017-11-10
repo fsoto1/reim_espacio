@@ -51,7 +51,7 @@ public class OrdenarFigurasVista  : OrdenarFigurasElement
 
     public void OnGUI()
     {
-        if (SceneManager.GetActiveScene().name =="ordenarFiguras")
+        if (SceneManager.GetActiveScene().name =="ordenarFiguras1")
         {
             GUIStyle style = new GUIStyle();
             style.fontSize = 30;

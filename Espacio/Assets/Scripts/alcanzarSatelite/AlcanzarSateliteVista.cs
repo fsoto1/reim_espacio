@@ -16,7 +16,7 @@ public class AlcanzarSateliteVista  : AlcanzarSateliteElement
     
     public void OnGUI()
     {
-        if (SceneManager.GetActiveScene().name =="alcanzarSatelite")
+        if (SceneManager.GetActiveScene().name =="alcanzarSatelite1")
         {
             GUIStyle style = new GUIStyle();
             style.fontSize = 30;

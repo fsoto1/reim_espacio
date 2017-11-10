@@ -9,11 +9,20 @@ public class NavegacionVista : NavegacionElement
     public Slider barra;
     public Button volver;
     public Button ayuda;
+    public Image negro;
+    public Animator animador;
+
+    public IEnumerator faded()
+    {
+        animador.SetBool("Fade", true);
+        yield return new WaitUntil(() => negro.color.a == 1);
+        SceneManager.LoadScene("login");
+    }
 
     public void volverClick()
     {
         StartCoroutine(nav.general.enviarBd(nav.general.Navegacion, nav.modelo.ToquesNav, nav.modelo.DuracionToquesNav, 0, 0, 0, 0, 1, nav.modelo.AyudasNav, nav.modelo.DuracionNav));
-        SceneManager.LoadScene("login");
+        StartCoroutine(faded());
     }
 
     public void ayudaClick()
@@ -38,7 +47,7 @@ public class NavegacionVista : NavegacionElement
 
     public void OnGUI()
     {
-        if (SceneManager.GetActiveScene().name == "navegacion")
+        if (SceneManager.GetActiveScene().name == "navegacion1")
         {
             GUIStyle style = new GUIStyle();
             style.fontSize = 30;

@@ -23,6 +23,7 @@ public class RecolectarObjetosModelo : RecolectarObjetosElement
     private int ayudas;
     private int erroresGen;
     private int aciertosGen;
+    private int idPatron;
 
     public float Velocidad_jugador
     {
@@ -255,6 +256,19 @@ public class RecolectarObjetosModelo : RecolectarObjetosElement
         set
         {
             aciertosGen = value;
+        }
+    }
+
+    public int IdPatron
+    {
+        get
+        {
+            return idPatron;
+        }
+
+        set
+        {
+            idPatron = value;
         }
     }
 }

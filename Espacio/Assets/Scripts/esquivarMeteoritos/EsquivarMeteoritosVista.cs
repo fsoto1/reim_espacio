@@ -49,7 +49,7 @@ public class EsquivarMeteoritosVista : EsquivarMeteoritosElement
 
     public void OnGUI()
     {
-        if (SceneManager.GetActiveScene().name == "esquivarMeteoritos")
+        if (SceneManager.GetActiveScene().name == "esquivarMeteoritos1")
         {
             GUIStyle style = new GUIStyle();
             style.fontSize = 30;

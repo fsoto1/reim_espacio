@@ -25,6 +25,8 @@ public class Login : NavegacionElement
     private int idPeriodo;
     private int idCurso;
     private int idAlumno;
+    public Animator animador;
+    public Image negro;
 
     public void mensajePopUp(string mensaje) {
         popUpText.text = mensaje;
@@ -113,9 +115,16 @@ public class Login : NavegacionElement
        // SceneManager.LoadScene("navegacion");
     }
 
+    public IEnumerator faded()
+    {
+        animador.SetBool("Fade", true);
+        yield return new WaitUntil(() => negro.color.a == 1);
+        SceneManager.LoadScene("navegacion");
+    }
     public void irNavegacion()
     {
-        SceneManager.LoadScene("navegacion");
+        StartCoroutine(nav.general.enviarBd(nav.general.Navegacion, 0, 0, 0, 0, 0, 0, 0, 0, 0));
+        StartCoroutine(faded());
     }
 
     public IEnumerator nuevaSesion()

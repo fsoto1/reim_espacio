@@ -76,7 +76,7 @@ public class RecolectarObjetosControlador : RecolectarObjetosElement
             yield return new WaitForSeconds(app.modelo.Tiempo_espera_oleada);
         }
     }
-    void reiniciarValores()
+    private void reiniciarValores()
     {
         StartCoroutine(generarOleada());
         app.modelo.Cantidad_colisiones = 0;
@@ -86,11 +86,37 @@ public class RecolectarObjetosControlador : RecolectarObjetosElement
         app.modelo.Finalizado = false;
     }
 
+    private IEnumerator cargarPatron()
+    {
+        string url = nav.general.BaseUrl + "Actividad/recolectaObjeto/patron";
+        Dictionary<string, string> headers = new Dictionary<string, string>();
+        headers.Add("Authorization", nav.general.Token);
+        headers.Add("Content-Type", "application/x-www-form-urlencoded");
+        WWWForm form = new WWWForm();
+        form.AddField("idActividad", nav.general.IdActividadActual);
+        form.AddField("color1", app.modelo.NombreColores[0]);
+        form.AddField("color2", app.modelo.NombreColores[1]);
+        form.AddField("color3", app.modelo.NombreColores[2]);
+        byte[] rawData = form.data;
+        WWW www = new WWW(url, rawData, headers);
+        yield return www;
+        app.modelo.IdPatron = int.Parse(www.text);
+        if (www.text == "ingresado")
+        {
+            Debug.Log("1");
+        }
+        else
+        {
+            Debug.Log("0");
+            Debug.Log(www.text);
+        }
+    }
     private void Start()
     {
         app.modelo.Finalizado = false;
         cargarColores();
         reiniciarValores();
+        StartCoroutine(cargarPatron());
     }
 
     

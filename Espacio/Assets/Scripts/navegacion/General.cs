@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class General : NavegacionElement
 {
-    
     private string baseUrl = "http://localhost:8080/reim/ws/";
     private int idReim = 570;
     private int idAlumno = 25387;

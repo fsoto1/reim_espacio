@@ -26,7 +26,7 @@ public class Escenas : NavegacionElement
             else if (escena == "recolectarObjetos")
             {
                 //nav.modelo.Energia -= 2;
-                StartCoroutine(nav.general.enviarBd(nav.general.Navegacion, nav.modelo.ToquesNav, nav.modelo.DuracionToquesNav, 0, 0, 0, 0, 0, nav.modelo.AyudasNav, nav.modelo.DuracionNav));
+                StartCoroutine(nav.general.enviarBdId(nav.general.Navegacion, nav.modelo.ToquesNav, nav.modelo.DuracionToquesNav, 0, 0, 0, 0, 0, nav.modelo.AyudasNav, nav.modelo.DuracionNav));
             }
             else if (escena == "ordenarFiguras")
             {

@@ -46,7 +46,7 @@ public class RecolectarObjetosVista : RecolectarObjetosElement
 
     public void OnGUI()
     {
-        if (SceneManager.GetActiveScene().name == "recolectarObjetos")
+        if (SceneManager.GetActiveScene().name == "recolectarObjetos1")
         {
             GUIStyle style = new GUIStyle();
             style.fontSize = 30;
