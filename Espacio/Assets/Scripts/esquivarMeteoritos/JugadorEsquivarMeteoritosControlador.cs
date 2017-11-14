@@ -39,6 +39,7 @@ public class JugadorEsquivarMeteoritosControlador : EsquivarMeteoritosElement
         while (true)
         {
             yield return new WaitForSeconds(15);
+            StartCoroutine(nav.general.detalleActividad(1, app.modelo.Duracion));
             nav.modelo.Energia++;
             GetComponent<AudioSource>().clip = energiaClip;
             GetComponent<AudioSource>().Play();
@@ -58,15 +59,14 @@ public class JugadorEsquivarMeteoritosControlador : EsquivarMeteoritosElement
 
     private void OnCollisionEnter(Collision collision)
     {
-
+        StartCoroutine(nav.general.detalleActividad(0, app.modelo.Duracion));
         app.modelo.Cantidad_colisiones++;
         Vector3 dir = collision.contacts[0].point - transform.position;
         dir = -dir.normalized;
-        GetComponent<Rigidbody>().AddForce(dir * 50f);
+        GetComponent<Rigidbody>().AddForce(dir * 5000f);
         GetComponent<AudioSource>().clip = choqueClip;
         GetComponent<AudioSource>().Play();
-        GetComponent<AudioSource>().clip = choqueClip;
-        GetComponent<AudioSource>().Play();
+
     }
 
 

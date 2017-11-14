@@ -11,6 +11,8 @@ public class NavegacionVista : NavegacionElement
     public Button ayuda;
     public Image negro;
     public Animator animador;
+    public GameObject panel;
+    public AudioClip info;
 
     public IEnumerator faded()
     {
@@ -21,18 +23,36 @@ public class NavegacionVista : NavegacionElement
 
     public void volverClick()
     {
-        StartCoroutine(nav.general.enviarBd(nav.general.Navegacion, nav.modelo.ToquesNav, nav.modelo.DuracionToquesNav, 0, 0, 0, 0, 1, nav.modelo.AyudasNav, nav.modelo.DuracionNav));
-        StartCoroutine(faded());
+        panel.SetActive(true);
+    }
+
+    private IEnumerator audioAyuda()
+    {
+        yield return new WaitForSeconds(info.length);
     }
 
     public void ayudaClick()
     {
         nav.modelo.AyudasNav++;
+        GetComponent<AudioSource>().clip = info;
+        GetComponent<AudioSource>().Play();
+    }
+
+    public void salirAceptar()
+    {
+        StartCoroutine(nav.general.enviarBd(nav.general.Navegacion, nav.modelo.ToquesNav, nav.modelo.DuracionToquesNav, 0, 0, 0, 0, 1, nav.modelo.AyudasNav, nav.modelo.DuracionNav));
+        StartCoroutine(faded());
+    }
+
+    public void salirCancelar()
+    {
+        panel.SetActive(false);
     }
 
     private void Start()
     {
         barra.value = calcular();
+        nav.modelo.AyudasNav = 0;
     }
 
     private void LateUpdate()

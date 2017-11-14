@@ -8,7 +8,7 @@ public class AlcanzarSateliteControlador : AlcanzarSateliteElement
     public GameObject asteroide1;
     public GameObject asteroide2;
     public GameObject asteroide3;
-    private GameObject satelite;
+    public GameObject satelite;
     public int cantidadMin;
     public int cantidadMax;
     private int random;
@@ -57,11 +57,13 @@ public class AlcanzarSateliteControlador : AlcanzarSateliteElement
         app.modelo.Duracion_toques = 0f;
         app.modelo.Toques = 0;
         app.modelo.Ayudas = 0;
+        app.modelo.AsteroidesGen = 0;
         app.modelo.Finalizado = false;
     }
 
     private void Start()
     {
+        satelite.GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * app.modelo.Velocidad_rotacion;
         app.modelo.AsteroidesGen = Random.Range(cantidadMin, cantidadMax);
 
         for (int i = 0; i < app.modelo.AsteroidesGen; i++)

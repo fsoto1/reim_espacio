@@ -9,7 +9,7 @@ public class OrdenarFigurasVista  : OrdenarFigurasElement
     public Slider barra;
     public Button volver;
     public Button ayuda;
-
+    public AudioClip info;
     public Image negro;
     public Animator animador;
 
@@ -22,7 +22,6 @@ public class OrdenarFigurasVista  : OrdenarFigurasElement
 
     public void volverClick()
     {
-        //StartCoroutine(nav.general.enviarBd(nav.general.OrdenarFiguras, app.modelo.Toques, app.modelo.Duracion_toques, 0, 0, app.modelo.Aciertos, app.modelo.AciertosGen, 1, app.modelo.Ayudas, app.modelo.Duracion));
         app.modelo.BotonSalir = true;
         nav.modelo.JugadorPosX = 5f;
         nav.modelo.JugadorPosY = -6f;
@@ -32,6 +31,8 @@ public class OrdenarFigurasVista  : OrdenarFigurasElement
     public void ayudaClick()
     {
         app.modelo.Ayudas++;
+        GetComponent<AudioSource>().clip = info;
+        GetComponent<AudioSource>().Play();
     }
 
     private void Start()

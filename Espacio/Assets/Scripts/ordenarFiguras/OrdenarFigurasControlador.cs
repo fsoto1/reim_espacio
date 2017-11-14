@@ -62,6 +62,7 @@ public class OrdenarFigurasControlador : OrdenarFigurasElement
         app.modelo.Toques = 0;
         app.modelo.Ayudas = 0;
         app.modelo.Aciertos = 0;
+        app.modelo.AciertosGen = 0;
         app.modelo.Finalizado = false;
         app.modelo.Posicion1 = false;
         app.modelo.Posicion2 = false;
@@ -104,7 +105,6 @@ public class OrdenarFigurasControlador : OrdenarFigurasElement
     {
         nPizarra = Random.Range(1, pizarra.Length);
         app.modelo.Pizarra = nPizarra;
-        Debug.Log("PIZARRA ASIG "+nPizarra);
         planePizarra.GetComponent<Renderer>().sharedMaterial = pizarra[nPizarra];
         app.modelo.AciertosGen = 5;
         if (nPizarra <= 6)
@@ -703,27 +703,6 @@ public class OrdenarFigurasControlador : OrdenarFigurasElement
         {
             salirActividad();
         }
-        /*
-        toques();
-        if (!app.modelo.Finalizado)
-        {
-            posiciones();
-            comparar();
-        }
-        if (app.modelo.BotonSalir)
-        {
-            salirActividad();
-        }
-        if (app.modelo.Finalizado && !app.modelo.Recompensa)
-        {
-            app.modelo.Recompensa = true;
-            GetComponent<AudioSource>().clip = energiaClip;
-            GetComponent<AudioSource>().Play();
-            nav.modelo.Energia += 2;            
-            StartCoroutine(nav.general.enviarBd(nav.general.OrdenarFiguras, app.modelo.Toques, app.modelo.Duracion_toques, 0, 0, app.modelo.Aciertos, app.modelo.AciertosGen, 1, app.modelo.Ayudas, app.modelo.Duracion));
-            StartCoroutine(finalizar());
-        }
-        */
     }
 
     private void Start()

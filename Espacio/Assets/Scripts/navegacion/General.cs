@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class General : NavegacionElement
 {
     private string baseUrl = "http://localhost:8080/reim/ws/";
-    private int idReim = 570;
+   private int idReim = 570;
     private int idAlumno = 25387;
     private int navegacion = 167;
     private int alcanzarSatelite = 168;
@@ -16,7 +16,7 @@ public class General : NavegacionElement
     private int ordenarFiguras = 171;
     private int esquivarMeteoritos = 172;
     private int idSesion = 1;
-    private int idActividadActual;
+    private int idActividadActual = 200;
 
     public IEnumerator enviarBd(int actividad, int toques, float duracion_toques, int errores, int erroresGen, int aciertos, int aciertosGen, int finalizado, int ayudas, float duracion)
     {
@@ -93,6 +93,31 @@ public class General : NavegacionElement
         yield return www;
         Debug.Log(www.text);
         idActividadActual = int.Parse(www.text);
+        if (www.text == "ingresado")
+        {
+            Debug.Log("1");
+        }
+        else
+        {
+            Debug.Log("0");
+            Debug.Log(www.text);
+        }
+
+    }
+
+    public IEnumerator detalleActividad(int correcto, float tiempoActividad)
+    {
+        string url = nav.general.BaseUrl + "Actividad/detalle";
+        Dictionary<string, string> headers = new Dictionary<string, string>();
+        headers.Add("Authorization", nav.general.Token);
+        headers.Add("Content-Type", "application/x-www-form-urlencoded");
+        WWWForm form = new WWWForm();
+        form.AddField("idActividad", idActividadActual);
+        form.AddField("correcto", correcto);
+        form.AddField("tiempoActividad", tiempoActividad.ToString());
+        byte[] rawData = form.data;
+        WWW www = new WWW(url, rawData, headers);
+        yield return www;
         if (www.text == "ingresado")
         {
             Debug.Log("1");

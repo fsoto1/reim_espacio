@@ -44,16 +44,18 @@ public class JugadorRecogerSuministrosControlador : RecogerSuministrosElement
         if (collision.gameObject.name == "Suministro(Clone)")
         {
             Destroy(collision.gameObject);
+            StartCoroutine(nav.general.detalleActividad(1, app.modelo.Duracion));
             app.modelo.Cantidad_suministros++;
             GetComponent<AudioSource>().clip = energiaClip;
             GetComponent<AudioSource>().Play();
-            if (app.modelo.Cantidad_suministros % 10 == 0)
+            if (app.modelo.Cantidad_suministros % 6 == 0)
             {
                 nav.modelo.Energia++;                
             }
         }
         else
         {
+            StartCoroutine(nav.general.detalleActividad(0, app.modelo.Duracion));
             app.modelo.Cantidad_colisiones++;
             Vector3 dir = collision.contacts[0].point - transform.position;
             dir = -dir.normalized;

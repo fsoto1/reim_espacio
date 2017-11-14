@@ -9,7 +9,7 @@ public class RecogerSuministrosVista : RecogerSuministrosElement
     public Slider barra;
     public Button volver;
     public Button ayuda;
-
+    public AudioClip info;
     public Image negro;
     public Animator animador;
 
@@ -31,6 +31,8 @@ public class RecogerSuministrosVista : RecogerSuministrosElement
     public void ayudaClick()
     {
         app.modelo.Ayudas++;
+        GetComponent<AudioSource>().clip = info;
+        GetComponent<AudioSource>().Play();
     }
 
     private void Start()
@@ -50,7 +52,7 @@ public class RecogerSuministrosVista : RecogerSuministrosElement
 
     public void OnGUI()
     {
-        if (SceneManager.GetActiveScene().name == "recogerSuministros")
+        if (SceneManager.GetActiveScene().name == "recogerSuministros1")
         {
             GUIStyle style = new GUIStyle();
             style.fontSize = 30;

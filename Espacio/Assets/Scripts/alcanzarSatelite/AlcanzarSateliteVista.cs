@@ -9,7 +9,7 @@ public class AlcanzarSateliteVista  : AlcanzarSateliteElement
     public Slider barra;
     public Button volver;
     public Button ayuda;
-
+    public AudioClip info;
     public Image negro;
     public Animator animador;
 
@@ -46,6 +46,8 @@ public class AlcanzarSateliteVista  : AlcanzarSateliteElement
     public void ayudaClick()
     {
         app.modelo.Ayudas++;
+        GetComponent<AudioSource>().clip = info;
+        GetComponent<AudioSource>().Play();
     }
     private void Start()
     {

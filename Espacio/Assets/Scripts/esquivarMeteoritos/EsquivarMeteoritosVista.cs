@@ -11,6 +11,7 @@ public class EsquivarMeteoritosVista : EsquivarMeteoritosElement
     public Button ayuda;
     public Image negro;
     public Animator animador;
+    public AudioClip info;
 
     public IEnumerator faded()
     {
@@ -30,6 +31,8 @@ public class EsquivarMeteoritosVista : EsquivarMeteoritosElement
     public void ayudaClick()
     {
         app.modelo.Ayudas++;
+        GetComponent<AudioSource>().clip = info;
+        GetComponent<AudioSource>().Play();
     }
 
     private void Start()

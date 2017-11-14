@@ -86,7 +86,7 @@ public class JugadorRecolectarObjetosControlador : RecolectarObjetosElement
         }
         else
         {
-            if (app.modelo.Recolectados % 10 == 0)
+            if (app.modelo.Recolectados % 7 == 0)
             {
                 nav.modelo.Energia++;
             }
@@ -98,6 +98,8 @@ public class JugadorRecolectarObjetosControlador : RecolectarObjetosElement
     {
         moverJugador();
     }
+
     
+
 
 }

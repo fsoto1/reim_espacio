@@ -76,13 +76,17 @@ public class RecolectarObjetosControlador : RecolectarObjetosElement
             yield return new WaitForSeconds(app.modelo.Tiempo_espera_oleada);
         }
     }
-    private void reiniciarValores()
+
+    public void reiniciarValores()
     {
-        StartCoroutine(generarOleada());
         app.modelo.Cantidad_colisiones = 0;
+        app.modelo.Recolectados = 0;
         app.modelo.Duracion = 0f;
         app.modelo.Duracion_toques = 0f;
         app.modelo.Toques = 0;
+        app.modelo.Ayudas = 0;
+        app.modelo.ErroresGen = 0;
+        app.modelo.AciertosGen = 0;
         app.modelo.Finalizado = false;
     }
 
@@ -117,6 +121,7 @@ public class RecolectarObjetosControlador : RecolectarObjetosElement
         cargarColores();
         reiniciarValores();
         StartCoroutine(cargarPatron());
+        StartCoroutine(generarOleada());
     }
 
     

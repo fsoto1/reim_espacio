@@ -50,13 +50,20 @@ public class EsquivarMeteoritosControlador : EsquivarMeteoritosElement
     {
         app.modelo.Duracion = Time.timeSinceLevelLoad;
     }
-    
-    void Start()
+
+    public void reiniciarValores()
     {
-        StartCoroutine(generarOleada());        
         app.modelo.Cantidad_colisiones = 0;
+        app.modelo.Duracion = 0f;
         app.modelo.Acelerometro = 0f;
-        app.modelo.Duracion = 0;
-        app.modelo.Finalizado = false;        
+        app.modelo.Ayudas = 0;
+        app.modelo.MeteoritosGen = 0;
+        app.modelo.Finalizado = false;
+    }
+
+    private void Start()
+    {
+        reiniciarValores();
+        StartCoroutine(generarOleada());
     }
 }

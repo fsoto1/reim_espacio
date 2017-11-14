@@ -6,7 +6,7 @@ using UnityEngine;
 public class NavegacionModelo : NavegacionElement
 {
 
-    private float energia = 0;
+    private float energia;
     private float maxEnergia = 15f;
     private float velocidad_background = 0.25f;
     private float velocidadRotacion = 20f;
@@ -16,6 +16,7 @@ public class NavegacionModelo : NavegacionElement
     private int ayudasNav;
     private float jugadorPosX = -20f;
     private float jugadorPosY = 0f;
+    private int choqueBorde;
 
 
 
@@ -146,6 +147,19 @@ public class NavegacionModelo : NavegacionElement
         set
         {
             jugadorPosY = value;
+        }
+    }
+
+    public int ChoqueBorde
+    {
+        get
+        {
+            return choqueBorde;
+        }
+
+        set
+        {
+            choqueBorde = value;
         }
     }
 }

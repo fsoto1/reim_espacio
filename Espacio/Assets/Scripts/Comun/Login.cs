@@ -293,7 +293,7 @@ public class Login : NavegacionElement
             {
                 GameObject elemento = Instantiate(itemPeriodo);
                 elemento.name = usuario.nombres;
-                elemento.GetComponentInChildren<Text>().text = usuario.nombres;
+                elemento.GetComponentInChildren<Text>().text = usuario.nombres + " " + usuario.apellidoPaterno;
                 elemento.GetComponent<Button>().onClick.AddListener(() => seleccionarAlumno(usuario.id));
                 elemento.transform.SetParent(padrePeriodo, false);
             }
@@ -367,6 +367,19 @@ public class Login : NavegacionElement
     {
         usuario = usuarioInput.text;
         StartCoroutine(autenticar());
+    }
+
+    public void salir()
+    {
+        Application.Quit();
+    }
+
+    private void Start()
+    {
+        nav.modelo.Energia = 0;
+        nav.modelo.AyudasNav = 0;
+        nav.modelo.JugadorPosX = -20f;
+        nav.modelo.JugadorPosY = 0f;
     }
 
     public void reim() {

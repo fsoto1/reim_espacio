@@ -55,14 +55,22 @@ public class RecogerSuministrosControlador : RecogerSuministrosElement
         }
     }
 
-    void Start()
+    public void reiniciarValores()
     {
-        StartCoroutine(generarOleada());
         app.modelo.Cantidad_colisiones = 0;
-        app.modelo.Cantidad_suministros = 0;
+        app.modelo.Cantidad_suministros = 0; 
         app.modelo.Duracion = 0f;
         app.modelo.Duracion_toques = 0f;
         app.modelo.Toques = 0;
+        app.modelo.Ayudas = 0;
+        app.modelo.MeteoritosGen = 0;
+        app.modelo.SuministrosGen = 0;
         app.modelo.Finalizado = false;
+    }
+
+    void Start()
+    {
+        reiniciarValores();
+        StartCoroutine(generarOleada());        
     }
 }
