@@ -27,6 +27,17 @@ public class OrdenarFigurasModelo : OrdenarFigurasElement
     private bool posicion9;
     private int pizarra;
 
+    private int cantP1;
+    private int cantP2;
+    private int cantP3;
+    private int cantP4;
+    private int cantP5;
+    private int cantP6;
+    private int cantP7;
+    private int cantP8;
+    private int cantP9;
+
+
 
 
     public float Jugador_velocidad
@@ -299,6 +310,123 @@ public class OrdenarFigurasModelo : OrdenarFigurasElement
         set
         {
             pizarra = value;
+        }
+    }
+
+    public int CantP1
+    {
+        get
+        {
+            return cantP1;
+        }
+
+        set
+        {
+            cantP1 = value;
+        }
+    }
+
+    public int CantP2
+    {
+        get
+        {
+            return cantP2;
+        }
+
+        set
+        {
+            cantP2 = value;
+        }
+    }
+
+    public int CantP3
+    {
+        get
+        {
+            return cantP3;
+        }
+
+        set
+        {
+            cantP3 = value;
+        }
+    }
+
+    public int CantP4
+    {
+        get
+        {
+            return cantP4;
+        }
+
+        set
+        {
+            cantP4 = value;
+        }
+    }
+
+    public int CantP5
+    {
+        get
+        {
+            return cantP5;
+        }
+
+        set
+        {
+            cantP5 = value;
+        }
+    }
+
+    public int CantP6
+    {
+        get
+        {
+            return cantP6;
+        }
+
+        set
+        {
+            cantP6 = value;
+        }
+    }
+
+    public int CantP7
+    {
+        get
+        {
+            return cantP7;
+        }
+
+        set
+        {
+            cantP7 = value;
+        }
+    }
+
+    public int CantP8
+    {
+        get
+        {
+            return cantP8;
+        }
+
+        set
+        {
+            cantP8 = value;
+        }
+    }
+
+    public int CantP9
+    {
+        get
+        {
+            return cantP9;
+        }
+
+        set
+        {
+            cantP9 = value;
         }
     }
 }

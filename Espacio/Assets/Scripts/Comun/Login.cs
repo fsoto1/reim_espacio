@@ -27,6 +27,8 @@ public class Login : NavegacionElement
     private int idAlumno;
     public Animator animador;
     public Image negro;
+    private string nombreAlumno;
+    private string apellidoAlumno;
 
     public void mensajePopUp(string mensaje) {
         popUpText.text = mensaje;
@@ -103,14 +105,15 @@ public class Login : NavegacionElement
         StartCoroutine(buscarAlumno());
     }
 
-    public void seleccionarAlumno(int alumno)
+    public void seleccionarAlumno(int alumno, string nombre, string apellido)
     {
         Debug.Log("nombre boton " + botonAtras.name);
         idAlumno = alumno;
-        mensajePopUp("ALUMNO = "+idAlumno);
+        apellidoAlumno = apellido;
+        nombreAlumno = nombre;
         nav.general.IdAlumno = idAlumno;
         StartCoroutine(nuevaSesion());
-        iniciarJuego();
+        //iniciarJuego();
 
        // SceneManager.LoadScene("navegacion");
     }
@@ -140,11 +143,7 @@ public class Login : NavegacionElement
         Debug.Log(www.text);
         Sesion sesion = JsonUtility.FromJson<Sesion>(www.text);
         nav.general.IdSesion = sesion.idSesion;
-    }
-
-    public void iniciarJuego()
-    {
-       
+        //carga datos
         foreach (Transform child in padrePeriodo)
         {
             GameObject.Destroy(child.gameObject);
@@ -152,13 +151,14 @@ public class Login : NavegacionElement
 
         GameObject elemento = Instantiate(itemPeriodo);
         elemento.name = "iniciar";
-        elemento.GetComponentInChildren<Text>().text = "Iniciar";
+        elemento.GetComponentInChildren<Text>().text = "Juega \n" + nombreAlumno + " " + apellidoAlumno;
         elemento.GetComponent<Button>().onClick.AddListener(() => irNavegacion());
         elemento.transform.SetParent(padrePeriodo, false);
-   
+
         botonAtras.name = "iniciar";
     }
 
+ 
 
     /**
         *   Extrae los periodos en la base de datos
@@ -216,13 +216,25 @@ public class Login : NavegacionElement
             {
                 GameObject.Destroy(child.gameObject);
             }
+            for (int i = 0; i < colegios.Length-1; i++)
+            {
+                
+                if (colegios[i].id == colegios [i+1].id)
+                {
+                    colegios[i].id = 0;
+                }
+            }
             foreach (var colegio in colegios)
             {
-                GameObject elemento = Instantiate(itemPeriodo);
-                elemento.name = colegio.nombre;
-                elemento.GetComponentInChildren<Text>().text = colegio.nombre;
-                elemento.GetComponent<Button>().onClick.AddListener(() => seleccionarColegio(colegio.id));
-                elemento.transform.SetParent(padrePeriodo, false);
+                if (colegio.id != 0)
+                {
+                    GameObject elemento = Instantiate(itemPeriodo);
+                    elemento.name = colegio.nombre;
+                    elemento.GetComponentInChildren<Text>().text = colegio.nombre;
+                    elemento.GetComponent<Button>().onClick.AddListener(() => seleccionarColegio(colegio.id));
+                    elemento.transform.SetParent(padrePeriodo, false);
+                }
+                
             }
 
         }
@@ -294,7 +306,7 @@ public class Login : NavegacionElement
                 GameObject elemento = Instantiate(itemPeriodo);
                 elemento.name = usuario.nombres;
                 elemento.GetComponentInChildren<Text>().text = usuario.nombres + " " + usuario.apellidoPaterno;
-                elemento.GetComponent<Button>().onClick.AddListener(() => seleccionarAlumno(usuario.id));
+                elemento.GetComponent<Button>().onClick.AddListener(() => seleccionarAlumno(usuario.id, usuario.nombres, usuario.apellidoPaterno));
                 elemento.transform.SetParent(padrePeriodo, false);
             }
 
@@ -339,10 +351,9 @@ public class Login : NavegacionElement
                         headers.Add("Authorization", nav.general.Token);
                         www = new WWW(url, rawData, headers);
                         yield return www;
-                        Debug.Log(www.text);
+
                         Usuario usuario = JsonUtility.FromJson<Usuario>(www.text);
                         idUsuario = usuario.id;
-                        Debug.Log("IDUSUARIO" + idUsuario);
                         mensajeUsuarioPopUp("Bienvenida(o)!\n " + usuario.nombres + " " + usuario.apellidoPaterno);
                         break;
                     }

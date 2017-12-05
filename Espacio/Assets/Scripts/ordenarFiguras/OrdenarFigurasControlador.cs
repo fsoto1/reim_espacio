@@ -74,6 +74,15 @@ public class OrdenarFigurasControlador : OrdenarFigurasElement
         app.modelo.Posicion8 = false;
         app.modelo.Posicion9 = false;
         app.modelo.BotonSalir = false;
+        app.modelo.CantP1 = 0;
+        app.modelo.CantP2 = 0;
+        app.modelo.CantP3 = 0;
+        app.modelo.CantP4 = 0;
+        app.modelo.CantP5 = 0;
+        app.modelo.CantP6 = 0;
+        app.modelo.CantP7 = 0;
+        app.modelo.CantP8 = 0;
+        app.modelo.CantP9 = 0;
 
     }
 

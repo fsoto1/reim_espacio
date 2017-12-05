@@ -7,7 +7,9 @@ using UnityEngine.UI;
 public class General : NavegacionElement
 {
     private string baseUrl = "http://localhost:8080/reim/ws/";
-   private int idReim = 570;
+    
+    private string token = "Beared eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJmc290byIsImlzcyI6Imh0dHA6Ly8xOC4yMzEuODkuMTk6ODA4MC9yZWltL3dzL0F1dGVudGljYWNpb24vY3JlZGVuY2lhbCIsImlhdCI6MTUxMDY0NTc0MywiZXhwIjoxNTEwNzE3NzQzfQ.pOJkGDjWjXvoDHJAMFErs04dqQKXGwUIcFwhK702Ek80iQgaYhbGBuR7Git9bkF1TnJp2-2jhyso3Yqcu6yGFA";
+    private int idReim = 570;
     private int idAlumno = 25387;
     private int navegacion = 167;
     private int alcanzarSatelite = 168;

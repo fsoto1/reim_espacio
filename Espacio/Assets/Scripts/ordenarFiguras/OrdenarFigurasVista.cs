@@ -79,6 +79,18 @@ public class OrdenarFigurasVista  : OrdenarFigurasElement
 
                 , style);
 
+            GUI.Label(new Rect(0, 400, 100, 100), " | P1 " + app.modelo.CantP1 +
+                                                  " | P2 " + app.modelo.CantP2 +
+                                                  " | P3 " + app.modelo.CantP3 +
+                                                  "\n | P4 " + app.modelo.CantP4 +
+                                                  " | P5 " + app.modelo.CantP5 +
+                                                  " | P6 " + app.modelo.CantP6 +
+                                                  "\n | P7 " + app.modelo.CantP7 +
+                                                  " | P8 " + app.modelo.CantP8 +
+                                                  " | P9 " + app.modelo.CantP9
+
+
+                , style);
         }
     }    
 }
